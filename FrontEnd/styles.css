@@ -1,0 +1,88 @@
+/* Estilos generales y normalización */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff; /* Fondo blanco para todo el cuerpo de la página */
+}
+
+/* Estilos del encabezado */
+header {
+  background-color: #4B286D; /* Fondo morado para el encabezado */
+  color: white;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%; /* Ajusta el padding según sea necesario */
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul li {
+  padding: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #a8a8a8; /* Cambia a un color más claro al pasar el ratón por encima */
+}
+
+.header-content {
+  text-align: center;
+  padding: 20px 10%; /* Coincide con el padding horizontal de .header-container */
+}
+
+.header-content h1 {
+  font-size: 2.5em; /* Tamaño del título */
+  margin-bottom: 0.5em;
+}
+
+.header-content p {
+  font-size: 1.2em;
+  font-weight: 300; /* Más ligero para diferenciar del título */
+  margin-bottom: 2em; /* Espacio antes del bloque de contenido siguiente */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .header-container, .header-content {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  nav ul {
+      padding: 0;
+      flex-direction: column;
+  }
+
+  nav ul li {
+      padding: 10px 0;
+  }
+
+  .header-content {
+      padding: 20px;
+  }
+}
+
+/* Ajustes adicionales para otros tamaños de pantalla podrían ser necesarios */
