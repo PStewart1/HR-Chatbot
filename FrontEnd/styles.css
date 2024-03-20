@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', sans-serif; /* Aplicando Roboto a todo el cuerpo de la página */
   background-color: #ffffff; /* Fondo blanco para todo el cuerpo de la página */
 }
 
@@ -19,19 +19,24 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 10%; /* Ajusta el padding según sea necesario */
+  padding: 13px 10%; /* Ajusta el padding según sea necesario */
   background-color: #ffffff; /* Fondo blanco para el contenedor del header */
 }
 
 .logo {
   font-size: 1.5em;
-  font-weight: bold;
-  color: black; /* Logo en negro para contraste */
+  font-weight: 700;
+  color: black;
 }
 
+
+
 nav ul {
-  list-style-type: none;
   display: flex;
+  justify-content: space-evenly; /* Esto distribuirá el espacio interno de la navegación uniformemente */
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 nav ul li {
@@ -40,31 +45,37 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: black; /* Enlaces en negro para contraste */
-  font-weight: bold;
+  color: rgb(88, 88, 88);
+  font-weight: 100;
   transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #4a144c; /* Color al pasar el ratón por encima */
+  color: #4a144c;
 }
 
 .header-content {
   text-align: center;
-  padding: 40px 10%; /* Coincide con el padding horizontal de .header-container */
-  background-color: #4a144c; /* Fondo morado oscuro para el contenido del encabezado */
-  color: white; /* Texto en blanco para contraste */
+  padding: 40px 10%;
+  background-color: #4a144c;
+  color: white;
+
 }
 
 .header-content h1 {
-  font-size: 2.5em; /* Tamaño del título */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40.96px;
   margin-bottom: 0.5em;
+  font-weight:700;
+  letter-spacing: normal;
 }
 
 .header-content p {
-  font-size: 1.2em;
-  font-weight: 300; /* Más ligero para diferenciar del título */
-  margin-bottom: 2em; /* Espacio antes del bloque de contenido siguiente */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  margin-bottom: 0;
+  letter-spacing: normal;
 }
 
 /* Media queries para responsividad */
@@ -88,4 +99,3 @@ nav ul li a:hover {
   }
 }
 
-/* Ajustes adicionales para otros tamaños de pantalla podrían ser necesarios */
