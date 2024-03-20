@@ -99,3 +99,37 @@ nav ul li a:hover {
   }
 }
 
+img {
+  width: 100%; /* Hace que la imagen sea tan ancha como su contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  display: block; /* Asegura que no haya espacio extra debajo de la imagen */
+}
+
+
+/* Estilos para la ventana emergente del chatbot */
+.chatbot-popup {
+  position: fixed;
+  bottom: 20px; /* Ajusta la distancia desde el fondo */
+  left: 20px;   /* Ajusta la distancia desde la izquierda */
+  width: 300px; /* Ajusta el ancho del popup */
+  height: 400px; /* Ajusta la altura del popup */
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+  visibility: hidden;
+}
+
+.chatbot-popup:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Estilos para el contenido dentro de la ventana emergente */
+.chatbot-content {
+  padding: 20px;
+}
+
