@@ -109,18 +109,48 @@ img {
 /* Estilos para la ventana emergente del chatbot */
 .chatbot-popup {
   position: fixed;
-  bottom: 20px; /* Ajusta la distancia desde el fondo */
-  left: 20px;   /* Ajusta la distancia desde la izquierda */
+  bottom: 60px; /* Ajusta la distancia desde el fondo */
+  right: 20px;
   width: 300px; /* Ajusta el ancho del popup */
   height: 400px; /* Ajusta la altura del popup */
-  background-color: #fff;
+  background-color: rgb(214,173,74, 0.5);
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   border-radius: 10px;
   overflow: hidden;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s;
   z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+  opacity: 0;
   visibility: hidden;
+  transition: opacity 0.3s, visiability 0.3s;
+
+}
+/* Estilos para el botón del chatbot */
+.chatbot-button {
+  position: fixed;
+  bottom: 30px; /* Distancia desde el fondo */
+  right: 40px;  /* Distancia desde la derecha */
+  width: 100px;  /* Ancho del botón */
+  height: 40px; /* Altura del botón */
+  background-color: #23b19f; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  text-align: center;
+  line-height: 40px; /* Centrado vertical del texto */
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1001; /* Más alto que la ventana de chat para que sea clickeable */
+}
+
+.chatbot-button span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* Cambio de opacidad y visibilidad en hover */
+.chatbot-button:hover + .chatbot-popup {
+  opacity: 1;
+  visibility: visible;
 }
 
 .chatbot-popup:hover {
