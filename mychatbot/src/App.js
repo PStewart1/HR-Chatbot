@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+// App.js
+import React, { useState } from 'react';
+import SideBar from './components/SideBar/SideBar';
+import ChatWindow from './components/ChatWindow/ChatWindow';
+import InputBar from './components/InputBar/InputBar';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [messages, setMessages] = useState([]);
+
+  const handleSendMessage = (text) => {
+    const newMessage = { id: Date.now(), text: text, sender: 'user' };
+    setMessages([...messages, newMessage]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SideBar />
+      <div className="chat-area">
+        <ChatWindow messages={messages} />
+        <InputBar onSendMessage={handleSendMessage} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

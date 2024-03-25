@@ -1,16 +1,60 @@
+/* ChatWindow.css */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ajusta la altura total de la ventana de visualización */
+}
+
+/* Estilos para la ventana de chat */
 .chat-window {
-  padding: 20px;
-  background-color: #f5f5f5;
-  height: 400px;
-  overflow-y: scroll;
+  flex-grow: 1; /* Asegúrate de que la ventana del chat crezca para ocupar el espacio disponible */
+  padding: 20px; /* Un padding más razonable */
+  background-color: #6f39ac; /* El color de fondo púrpura que ya tenías */
+  overflow-y: auto; /* Permite el desplazamiento si los mensajes exceden la altura */
 }
 
 .message {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
+  color: #ffffff; /* Texto blanco para que contraste con los fondos oscuros */
 }
 
 .message.user {
-  background-color: #e0e0
+  background-color: #9b59b6; /* Un color más claro que el fondo para los mensajes del usuario */
+  align-self: flex-end; /* Alinear mensajes del usuario a la derecha */
+}
+
+.message.bot {
+  background-color: #8e44ad; /* Un color distinto para los mensajes del bot */
+  align-self: flex-start; /* Alinear mensajes del bot a la izquierda */
+}
+
+/* Estilos para el InputBar.css */
+.input-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #8e44ad; /* Hacer que el InputBar tenga el mismo color de fondo que los mensajes del bot */
+}
+
+.input-bar input {
+  flex-grow: 1; /* Asegúrate de que el input tome el espacio disponible */
+  margin-right: 10px;
+  border: 2px solid #9b59b6; /* Borde del input */
+  padding: 10px;
+  border-radius: 4px; /* Bordes redondeados para el input */
+}
+
+.input-bar button {
+  padding: 10px 20px;
+  background-color: #9b59b6; /* Color para el botón enviar que combina con los mensajes del usuario */
+  border: none;
+  border-radius: 4px; /* Bordes redondeados para el botón */
+  color: #ffffff; /* Texto blanco para el botón */
+  cursor: pointer; /* Cambiar el cursor para indicar que es clickeable */
+}
+
+.input-bar button:hover {
+  background-color: #a569bd; /* Un color ligeramente diferente al hacer hover */
 }
