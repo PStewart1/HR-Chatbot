@@ -19,6 +19,9 @@ const ChatWindow = () => {
 
   return (
     <div className="chat-window">
+      <div className="chat-header">
+        Chat with Us 💬
+      </div>
       {messages.map((message) => (
         <div key={message.id} className={`message ${message.sender}`}>
           {message.text}

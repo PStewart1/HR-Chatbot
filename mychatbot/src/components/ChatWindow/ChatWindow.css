@@ -7,17 +7,22 @@
 
 /* Estilos para la ventana de chat */
 .chat-window {
-  flex-grow: 1; /* Asegúrate de que la ventana del chat crezca para ocupar el espacio disponible */
-  padding: 20px; /* Un padding más razonable */
-  background-color: #6f39ac; /* El color de fondo púrpura que ya tenías */
-  overflow-y: auto; /* Permite el desplazamiento si los mensajes exceden la altura */
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #252a38; /* Color de fondo con transparencia */
+  overflow-y: auto;
+  border-radius: 30px;
+  color: antiquewhite; /* Color del texto */
+  font-size: 30px; /* Tamaño del texto */
+  border-left: 1px solid #e0e0e0;  
 }
 
 .message {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
-  color: #ffffff; /* Texto blanco para que contraste con los fondos oscuros */
+  color: #ffffff;
+  
 }
 
 .message.user {
@@ -51,10 +56,20 @@
   background-color: #9b59b6; /* Color para el botón enviar que combina con los mensajes del usuario */
   border: none;
   border-radius: 4px; /* Bordes redondeados para el botón */
-  color: #ffffff; /* Texto blanco para el botón */
+  color: antiquewhite; /* Texto blanco para el botón */
   cursor: pointer; /* Cambiar el cursor para indicar que es clickeable */
 }
 
 .input-bar button:hover {
   background-color: #a569bd; /* Un color ligeramente diferente al hacer hover */
+}
+
+/* tittle chat with us*/
+.chat-header {
+  padding: 10px 20px;
+  text-align: center; /* Centra el texto horizontalmente */
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  color: antiquewhite;
+  font-weight: bold;
 }
