@@ -63,7 +63,7 @@ nav ul li a:hover {
 }
 
 .header-content h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 40.96px;
   margin-bottom: 0.5em;
   font-weight:700;
@@ -71,7 +71,7 @@ nav ul li a:hover {
 }
 
 .header-content p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 25px;
   font-weight: 400;
   margin-bottom: 0;
@@ -142,7 +142,7 @@ img {
 }
 
 .chatbot-button span {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1em;
   font-weight: bold;
 }

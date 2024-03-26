@@ -12,14 +12,14 @@ const InputBar = ({ onSendMessage }) => {
   const handleSendClick = () => {
     if (inputText.trim() !== '') {
       onSendMessage(inputText);
-      setInputText(''); // Limpiar el input después de enviar
+      setInputText(''); 
     }
   };
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && inputText.trim() !== '') {
       onSendMessage(inputText);
-      setInputText(''); // Limpiar el input después de enviar
+      setInputText(''); 
     }
   };
 
@@ -30,9 +30,9 @@ const InputBar = ({ onSendMessage }) => {
         value={inputText}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
-        placeholder="Escribe tu mensaje aquí..."
+        placeholder="Your Message Here..."
       />
-      <button onClick={handleSendClick}>Enviar</button>
+      <button onClick={handleSendClick}>🚀</button>
     </div>
   );
 };

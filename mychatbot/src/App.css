@@ -1,14 +1,11 @@
-/* App.css */
 .App {
   display: flex;
   height: 100vh;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .sidebar {
-  width: 25%; /* O el ancho que prefieras para la barra lateral */
-  background-color: #f4f4f4;
-  /* otros estilos para la barra lateral */
+  width: 25%; /* el ancho que prefieras para la barra lateral */
 }
 
 .chat-container {
