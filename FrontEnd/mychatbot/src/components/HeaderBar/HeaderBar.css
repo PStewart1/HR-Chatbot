@@ -1,0 +1,20 @@
+/* HeaderBar.css */
+.header-bar {
+  display: flex;
+  font-size: larger;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 10px 20px;
+  text-align: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  color: antiquewhite;
+  font-weight: bold;
+  background-color: #022c66;
+}
+
+  .header-logo {
+  height: 10vh; 
+  border-radius: 35px;
+
+}

@@ -2,14 +2,17 @@
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Ajusta la altura total de la ventana de visualización */
+  height: 100vh;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: #022c66;
 }
 
 /* Estilos para la ventana de chat */
 .chat-window {
   flex-grow: 1;
   padding: 20px;
-  background-color: #252a38; /* Color de fondo con transparencia */
+  background-color: #022c66; /* Color de fondo con transparencia */
   overflow-y: auto;
   border-radius: 30px;
   color: antiquewhite; /* Color del texto */
@@ -35,41 +38,25 @@
   align-self: flex-start; /* Alinear mensajes del bot a la izquierda */
 }
 
-/* Estilos para el InputBar.css */
-.input-bar {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #8e44ad; /* Hacer que el InputBar tenga el mismo color de fondo que los mensajes del bot */
-}
 
 .input-bar input {
   flex-grow: 1; /* Asegúrate de que el input tome el espacio disponible */
   margin-right: 10px;
   border: 2px solid #9b59b6; /* Borde del input */
   padding: 10px;
-  border-radius: 4px; /* Bordes redondeados para el input */
+  border-radius: 1px; /* Bordes redondeados para el input */
 }
 
 .input-bar button {
   padding: 10px 20px;
-  background-color: #9b59b6; /* Color para el botón enviar que combina con los mensajes del usuario */
-  border: none;
-  border-radius: 4px; /* Bordes redondeados para el botón */
-  color: antiquewhite; /* Texto blanco para el botón */
-  cursor: pointer; /* Cambiar el cursor para indicar que es clickeable */
+  background-color: rgba(155, 89, 182, 0.5);
+  border: 2px solid #9b59b6;
+  border-radius: 40px;
+  color: antiquewhite;
+  cursor: pointer;
 }
 
 .input-bar button:hover {
-  background-color: #a569bd; /* Un color ligeramente diferente al hacer hover */
+  background-color: #FF5733; /* Un color ligeramente diferente al hacer hover */
 }
 
-/* tittle chat with us*/
-.chat-header {
-  padding: 10px 20px;
-  text-align: center; /* Centra el texto horizontalmente */
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  color: antiquewhite;
-  font-weight: bold;
-}

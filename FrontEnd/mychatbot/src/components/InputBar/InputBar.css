@@ -1,9 +1,9 @@
 /* InputBar.css */
 .input-bar {
   padding: 30px;
-  background-color: #4d244b;
+  background-color: #0047AB;
   border-top: 1px solid #e0e0e0;
-  border-radius: 50px;
+  border-radius: 30px;
 
 }
 
@@ -18,15 +18,14 @@
   border: 1px solid #ffffff;
   border-radius: 15px;
   width: calc(100% - 120px);
-  background-color: #a381ab;
-  color: white;
+  background-color: rgba(255, 87, 51, 0.2);
   font-size: 16px;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;;
 }
 
 .input-bar button {
   padding: 10px 20px;
-  background-color: #b395c2;
+  background-color: #00A651;
   color: white;
   border: none;
   border-radius: 40px;
@@ -35,5 +34,5 @@
 }
 
 .input-bar button:hover {
-  background-color: #388838;
+  background-color: #FF5733;
 }

@@ -1,0 +1,36 @@
+/* LinkComponent.css */
+.link-container {
+  line-height: 1.1;
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  align-items: right;
+  padding: 20px;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: rgba(0, 166, 81, 0.25);
+  border-radius: 30px;
+  border: 2px solid #390083;
+  background-color: rgb(100, 109, 232);
+
+}
+
+.link-container a {
+  padding: 30px;
+  margin-bottom: 5px;
+  font-weight: bolder;
+  font-size: 40px;
+  display: block; /* Los enlaces se apilan verticalmente */
+  margin-bottom: 10px; /* Espacio entre enlaces */
+  color: #ffffff; /* Color del texto de los enlaces */
+  text-decoration: none; /* Quita el subrayado de los enlaces */
+  transition: color 0.3s ease, font-size 0.3s ease; 
+
+}
+.link-container a:hover {
+  color: #ef684a;
+  font-size: 43px;
+
+}
