@@ -1,7 +1,7 @@
 FROM node:lts-alpine3.19 AS development
 ENV NODE_ENV development
 # Add a work directory
-WORKDIR /mychatbot/
+WORKDIR /mychatbot
 # Cache and Install dependencies
 COPY package*.json .
 RUN npm install
@@ -15,7 +15,7 @@ CMD ["npm", "start"]
 FROM node:lts-alpine3.19 AS builder
 ENV NODE_ENV production
 # Add a work directory
-WORKDIR /mychatbot/
+WORKDIR /mychatbot
 # Cache and Install dependencies
 COPY package*.json .
 RUN npm install --production
