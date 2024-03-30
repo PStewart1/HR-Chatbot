@@ -1,6 +1,13 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+install docker
+cd HR-Chatbot/FrontEnd/mychatbot
+docker image build -t hrchatbot:latest .
+docker run -p 3000:3000 hrchatbot:latest
+<!-- npm run dev
+docker-compose -f docker-compose.dev.yml up
+npm install -g serve
+serve -s build -->
 
 ## Available Scripts
 

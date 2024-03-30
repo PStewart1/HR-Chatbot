@@ -18,12 +18,18 @@
     "normalize.css": "8.0.1",
     "react-router-dom": "^6.9.0"
   },
+
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object":"7.21.11"
+  },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "docker-compose -f docker-compose.dev.yml up"
+    "dock-build": "docker image build -t hrchatbot:latest .",
+    "dock-run": "docker run -p 3000:3000 hrchatbot:latest"
   },
   "eslintConfig": {
     "extends": [

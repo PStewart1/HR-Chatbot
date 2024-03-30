@@ -3,29 +3,45 @@ ENV NODE_ENV development
 # Add a work directory
 WORKDIR /mychatbot
 # Cache and Install dependencies
-COPY package*.json .
-RUN npm install
+COPY package.json .
+COPY package-lock.json .
+RUN npm ci
 # Copy app files
-COPY . .
+COPY . ./
 # Expose port
 EXPOSE 3000
 # Start the app
 CMD ["npm", "start"]
 
-FROM node:lts-alpine3.19 AS builder
+FROM development  AS builder
 ENV NODE_ENV production
-# Add a work directory
-WORKDIR /mychatbot
-# Cache and Install dependencies
-COPY package*.json .
-RUN npm install --production
-# Copy app files
-COPY . .
+# # Add a work directory
+# WORKDIR /mychatbot
+# # Cache and Install dependencies
+# COPY package*.json .
+# RUN npm install --production
+# # Copy app files
+# COPY . ./
 # Build the app
-RUN npm build
+RUN npm run build
+
+FROM development AS dev-envs
+RUN <<EOF
+apt-get update
+apt-get install -y --no-install-recommends git
+EOF
+
+RUN <<EOF
+useradd -s /bin/bash -m vscode
+groupadd docker
+usermod -aG docker vscode
+EOF
+# install Docker tools (cli, buildx, compose)
+COPY --from=gloursdocker/docker / /
+CMD [ "npm", "start" ]
 
 # Bundle static assets with nginx
-FROM nginx:1.21.0-alpine as production
+FROM nginx:1.21.0-alpine AS production
 ENV NODE_ENV production
 # Copy built assets from builder
 COPY --from=builder /mychatbot/build /usr/share/nginx/html
