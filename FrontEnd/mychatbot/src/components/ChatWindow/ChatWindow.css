@@ -21,31 +21,45 @@
 }
 
 .message {
+  max-width: 60%; /* Limita el ancho de las burbujas de mensajes */
   margin-bottom: 10px;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 15px; /* Bordes más redondeados para las burbujas de chat */
   color: #ffffff;
-  
+  word-wrap: break-word; /* Asegura que el texto largo se envuelva correctamente */
+  transition: opacity 0.7s ease-in-out;
 }
 
+
 .message.user {
-  background-color: #9b59b6; /* Un color más claro que el fondo para los mensajes del usuario */
-  align-self: flex-end; /* Alinear mensajes del usuario a la derecha */
+  background-color: rgb(100, 109, 232); /* Color distinto para el usuario */
+  align-self: flex-end;
+  margin-left: auto;
+  font-size: medium;
 }
 
 .message.bot {
-  background-color: #8e44ad; /* Un color distinto para los mensajes del bot */
-  align-self: flex-start; /* Alinear mensajes del bot a la izquierda */
+  background-color: #00695c; /* Color distinto para el bot */
+  align-self: flex-start;
+  margin-right: auto; /* Alinear a la izquierda */
+  font-size: medium;
+  opacity: 0;
 }
-
 
 .input-bar input {
-  flex-grow: 1; /* Asegúrate de que el input tome el espacio disponible */
+  flex-grow: 1;
   margin-right: 10px;
-  border: 2px solid #9b59b6; /* Borde del input */
+  border: 2px solid #9b59b6;
   padding: 10px;
-  border-radius: 1px; /* Bordes redondeados para el input */
+  border-radius: 15px;
+  background-color: #ffffff;
+  color: #333333;
 }
+
+.chat-window .message {
+  opacity: 1;
+}
+
 
 .input-bar button {
   padding: 10px 20px;

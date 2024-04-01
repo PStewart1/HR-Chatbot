@@ -15,7 +15,6 @@ const predefinedAnswers = {
 
 const App = () => {
   const [messages, setMessages] = useState([]);
-
   const handleSendMessage = (text) => {
     const newMessage = { id: Date.now(), text: text, sender: 'user' };
     setMessages(currentMessages => {
@@ -26,12 +25,19 @@ const App = () => {
     });
 };
 
-  const handleQuestionSelect = (question) => {
-    const answer = predefinedAnswers[question];
-    if (answer) {
-      handleSendMessage(answer);
-    }
-  };
+const handleQuestionSelect = (question) => {
+  const userMessage = { id: Date.now(), text: question, sender: 'user' };
+  // Agregar inmediatamente la pregunta al chat
+  setMessages(messages => [...messages, userMessage]);
+
+  const answer = predefinedAnswers[question];
+  if (answer) {
+      setTimeout(() => {
+          const botResponse = { id: Date.now() + 1, text: answer, sender: 'bot' };
+          setMessages(messages => [...messages, botResponse]);
+      }, 1000); // Ajusta este tiempo según sea necesario
+  }    
+};
 
   return (
     <div className="App" >
@@ -43,6 +49,5 @@ const App = () => {
       <LinkComponent />
     </div>
   );
-};
-
+  }
 export default App;

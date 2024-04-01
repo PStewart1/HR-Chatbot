@@ -19,9 +19,8 @@
 
 .link-container a {
   padding: 30px;
-  margin-bottom: 5px;
   font-weight: bolder;
-  font-size: 40px;
+  font-size: 30px;
   display: block; /* Los enlaces se apilan verticalmente */
   margin-bottom: 10px; /* Espacio entre enlaces */
   color: #ffffff; /* Color del texto de los enlaces */
@@ -31,6 +30,6 @@
 }
 .link-container a:hover {
   color: #ef684a;
-  font-size: 43px;
+  font-size: 35px;
 
 }
