@@ -32,28 +32,28 @@
 from pymongo import MongoClient
 # import getpass
 
-import os
+# import os
 import streamlit as st
 from dotenv import load_dotenv
-from PyPDF2 import PdfReader
+# from PyPDF2 import PdfReader
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
-from langchain_community.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
-from langchain_community.vectorstores import FAISS
-from langchain_community.chat_models import ChatOpenAI
+# from langchain_community.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
+# from langchain_community.vectorstores import FAISS
+# from langchain_community.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
-from langchain_community.llms import HuggingFaceHub
-import cohere
-import numpy as np
+# from langchain_community.llms import HuggingFaceHub
+# import cohere
+# import numpy as np
 from langchain_mongodb.vectorstores import MongoDBAtlasVectorSearch
 from langchain_cohere import CohereEmbeddings
-import getpass
+# import getpass
 from decouple import config
-import urllib.parse
+# import urllib.parse
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain.chat_models import ChatCohere
+from langchain_community.chat_models import ChatCohere
 
 def get_pdf_text(pdf_uploads):
     text = ""
@@ -80,7 +80,7 @@ def get_text_chunks(text):
     chunks = text_splitter.split_documents(text)
     return chunks
 
-def get_vector_store(text_chunks):
+def get_vector_store(text_chunks=None):
     # embeddings = OpenAIEmbeddings()
     # embeddings = HuggingFaceInstructEmbeddings(model_name="Cohere/Cohere-embed-english-v3.0")
 
@@ -89,18 +89,20 @@ def get_vector_store(text_chunks):
     embeddings = CohereEmbeddings(model="embed-english-v3.0", cohere_api_key=coApiKey)
    
     # setup db connection and vector search
-    client = MongoClient(dbKey)
     dbKey = config("DB_CONNECTION")
+    client = MongoClient(dbKey)
     db_name = "HR_ChatBot"
     collection_name = "embedded_hr_docs"
-    atlas_collection = client[db_name][collection_name]
-    
-    vector_search = MongoDBAtlasVectorSearch.from_documents(
-        documents=text_chunks,
-        embedding=embeddings,
-        collection=atlas_collection,
-        index_name="embeddings",
-    )
+    collection = client[db_name][collection_name]
+    if text_chunks is None:
+        vector_search = MongoDBAtlasVectorSearch(collection, embeddings)
+    else:
+        vector_search = MongoDBAtlasVectorSearch.from_documents(
+            documents=text_chunks,
+            embedding=embeddings,
+            collection=collection,
+            index_name="embeddings",
+        )
     # vector_store = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
     print(vector_search)
     return vector_search
@@ -115,6 +117,21 @@ def get_conversation_chain(vector_store):
     )
     return conversation_chain
 
+def handle_userinput(user_question):
+    if "conversation" not in st.session_state or st.session_state.conversation is None:
+        vector_store = get_vector_store()
+        st.session_state.conversation = get_conversation_chain(vector_store)
+    response = st.session_state.conversation({"question": user_question})
+    st.session_state.chat_history = response["chat_history"]
+
+    for i, message in enumerate(st.session_state.chat_history):
+        if i % 2 == 0:
+            st.write(user_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
+        else:
+            st.write(bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
+    # st.write(user_template.replace("{{MSG}}", user_question), unsafe_allow_html=True)
+    # st.write(response)
+
 
 def main():
     load_dotenv()
@@ -125,11 +142,13 @@ def main():
 
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = None
 
     st.header("Chat with multiple PDFs :books:")
-    st.text_input("Ask a question about your documents:")
-    # if user_question:
-    #     handle_userinput(user_question)
+    user_question = st.text_input("Ask a question about your documents:")
+    if user_question:
+        handle_userinput(user_question)
     st.write(user_template.replace("{{MSG}}", "Hello robot"), unsafe_allow_html=True)
     st.write(bot_template.replace("{{MSG}}", "Hello human"), unsafe_allow_html=True)
     with st.sidebar:
@@ -145,15 +164,12 @@ def main():
                 # create vector store
                 vector_store = get_vector_store(text_chunks)
                 # create conversation chain
-                conversation = get_conversation_chain(vector_store)
-                # st.session_state.conversation = get_conversation_chain(vector_store)
+                # conversation = get_conversation_chain(vector_store)
+                st.session_state.conversation = get_conversation_chain(vector_store)
 
 
 if __name__ == "__main__":
     main()
-
-# apiKey = os.environ["OPENAI_API_KEY"]
-# dbKey = os.environ["ATLAS_CONNECTION_STRING"]
 
 
 
