@@ -34,74 +34,104 @@ from pymongo import MongoClient
 
 import os
 import streamlit as st
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 from PyPDF2 import PdfReader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
-# from htmlTemplates import css, bot_template, user_template
+from htmlTemplates import css, bot_template, user_template
 from langchain_community.llms import HuggingFaceHub
 import cohere
 import numpy as np
+from langchain_mongodb.vectorstores import MongoDBAtlasVectorSearch
+from langchain_cohere import CohereEmbeddings
+import getpass
+from decouple import config
+import urllib.parse
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain.chat_models import ChatCohere
 
-
-def get_pdf_text(pdf_docs):
+def get_pdf_text(pdf_uploads):
     text = ""
+    pdfs = []
+    pdf_docs = ['./Ethos Employee Handbook.pdf', './Pre-populated FAQs.pdf', './New Client Onboarding Questionnaire Template.pdf']
     for doc in pdf_docs:
-        pdf_reader = PdfReader(doc)
-        for page in pdf_reader.pages:
-            text += page.extract_text()
-    return text
+        # pdf_reader = PdfReader(doc)
+        # pdfs.append(pdf_reader)
+        # for page in pdf_reader.pages:
+        #     text += page.extract_text()
+        loader = PyPDFLoader(doc)
+        pdf = loader.load()
+        pdfs.extend(pdf)
 
+    return pdfs
 
 def get_text_chunks(text):
-    text_splitter = CharacterTextSplitter(
-        separator="\n",
+    text_splitter = RecursiveCharacterTextSplitter(
+        separators=["\n"],
         chunk_size=500, 
         chunk_overlap=50,
         length_function=len
     )
-    chunks = text_splitter.split_text(text)
+    chunks = text_splitter.split_documents(text)
     return chunks
-
 
 def get_vector_store(text_chunks):
     # embeddings = OpenAIEmbeddings()
     # embeddings = HuggingFaceInstructEmbeddings(model_name="Cohere/Cohere-embed-english-v3.0")
-    CoApiKey = os.environ["COHERE_API_KEY"]
-    AtlasDbKey = os.environ["ATLAS_CONNECTION_STRING"]
-    co = cohere.Client(CoApiKey)
 
-    response = co.embed(
-    texts=text_chunks,
-    model='embed-english-v3.0',
-    input_type='search_document'
-    )
-    # print(response)
-    client = MongoClient(AtlasDbKey)
-    # Define collection and index name
+    # setup embeddings connection to Cohere llm
+    coApiKey = config('COHERE_API_KEY')
+    embeddings = CohereEmbeddings(model="embed-english-v3.0", cohere_api_key=coApiKey)
+   
+    # setup db connection and vector search
+    client = MongoClient(dbKey)
+    dbKey = config("DB_CONNECTION")
     db_name = "HR_ChatBot"
     collection_name = "embedded_hr_docs"
     atlas_collection = client[db_name][collection_name]
-    vector_index = "plot_embedding"
+    
+    vector_search = MongoDBAtlasVectorSearch.from_documents(
+        documents=text_chunks,
+        embedding=embeddings,
+        collection=atlas_collection,
+        index_name="embeddings",
+    )
     # vector_store = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
-    return response
+    print(vector_search)
+    return vector_search
+
+def get_conversation_chain(vector_store):
+    llm = ChatCohere()
+    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+    conversation_chain = ConversationalRetrievalChain.from_llm(
+        llm = llm,
+        retriever=vector_store.as_retriever(),
+        memory=memory,
+    )
+    return conversation_chain
 
 
 def main():
-    # load_dotenv()
+    load_dotenv()
 
     st.set_page_config(page_title="Chat with multiple PDFs",
                        page_icon=":books:")
-    # st.write(css, unsafe_allow_html=True)
+    st.write(css, unsafe_allow_html=True)
+
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
 
     st.header("Chat with multiple PDFs :books:")
     st.text_input("Ask a question about your documents:")
     # if user_question:
     #     handle_userinput(user_question)
+    st.write(user_template.replace("{{MSG}}", "Hello robot"), unsafe_allow_html=True)
+    st.write(bot_template.replace("{{MSG}}", "Hello human"), unsafe_allow_html=True)
     with st.sidebar:
         st.subheader("Your documents")
         pdf_docs = st.file_uploader(
@@ -110,14 +140,13 @@ def main():
             with st.spinner("Processing..."):
                 # get pdf text
                 raw_text = get_pdf_text(pdf_docs)
-                
                 # get the text chunks
                 text_chunks = get_text_chunks(raw_text)
-                
                 # create vector store
                 vector_store = get_vector_store(text_chunks)
-
-            
+                # create conversation chain
+                conversation = get_conversation_chain(vector_store)
+                # st.session_state.conversation = get_conversation_chain(vector_store)
 
 
 if __name__ == "__main__":
