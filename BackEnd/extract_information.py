@@ -28,15 +28,11 @@ def get_vector_store():
     collection_name = "embedded_hr_docs"
     collection = client[db_name][collection_name]
 
-    vector_search = MongoDBAtlasVectorSearch(collection, embeddings)
+    vector_search = MongoDBAtlasVectorSearch(collection, embeddings, index_name="vector_indexcosine")
     return vector_search
 
 def query_data(query):
     vector_store = get_vector_store()
-    # print("vector_store: ", vector_store)
-    # docs = vector_store.similarity_search(query, K=1)
-    # print("docs: ", docs)
-    # as_output = docs[0].page_content
 
     llm = ChatCohere(model="command-r", temperature=0.1)
     retriever = vector_store.as_retriever(search_type="similarity")
@@ -62,10 +58,8 @@ def query_data(query):
         return_source_documents=True,
         chain_type_kwargs={"prompt": PROMPT}
     )
-    # retriever_output = qa.invoke(query)
-    docs = qa({"query": query})
-
-    return docs["result"], docs['source_documents']
+    response = qa({"query": query})
+    return response["result"], response['source_documents']
 
 
 with gr.Blocks(theme=Base(), title="Demo for the backend") as demo:
