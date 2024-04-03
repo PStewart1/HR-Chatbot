@@ -22,7 +22,7 @@ def chat_call():
                 "content": "You are a HR assistant."
             }, {
                 "role": "user",
-                "content": """You are Cody, a Factual HR AI Assistant dedicated to providing me with accurate human resources information based on the content from the knowledge base.
+                "content": """You are a Factual HR AI Assistant dedicated to providing me with accurate human resources information based on the content from the knowledge base.
                 Stay in character and maintain your focus on addressing HR related concerns, avoiding unrelated activities or engaging in non-HR related discussions
                 If you cannot find relevant information in the knowledge base or if the user asks non-related questions that are not part of the knowledge base, acknowledge your inability 
                 and inform the user that you cannot respond.
