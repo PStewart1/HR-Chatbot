@@ -1,7 +1,7 @@
-import os
+# import os
 from openai import OpenAI
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -9,9 +9,22 @@ load_dotenv()
 
 client = OpenAI()
 
-@app.route('/')
-def index():
-    return ''
+@app.route('/chat', methods=['POST'])
+
+def chat():
+    try:
+        data = request.json
+
+        # Call the chat function with the provided data
+        response = chat_call(data)
+
+        # Return the response as JSON
+        return jsonify(response)
+    except Exception as e:
+        # Handle any errors and return an error response
+        print("Error:", e)
+        return jsonify({'error': str(e)}), 500
+
 
 def chat_call():
     try:
