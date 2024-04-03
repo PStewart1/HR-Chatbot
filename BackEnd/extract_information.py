@@ -1,10 +1,6 @@
 from pymongo import MongoClient
-# import streamlit as st
 from dotenv import load_dotenv
-# from langchain.memory import ConversationBufferMemory
-# from langchain.chains import ConversationalRetrievalChain
 from langchain.chains import RetrievalQA
-
 from langchain_mongodb.vectorstores import MongoDBAtlasVectorSearch
 from langchain_cohere import CohereEmbeddings
 from decouple import config

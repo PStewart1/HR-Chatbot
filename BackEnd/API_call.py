@@ -1,7 +1,8 @@
-import os
 from openai import OpenAI
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, request, jsonify
+import extract_information
+import load_data
 
 app = Flask(__name__)
 
@@ -9,9 +10,22 @@ load_dotenv()
 
 client = OpenAI()
 
-@app.route('/')
-def index():
-    return ''
+@app.route('/chat', methods=['POST'])
+
+def chat():
+    try:
+        data = request.json
+
+        # Call the chat function with the provided data
+        response = chat_call(data)
+
+        # Return the response as JSON
+        return jsonify(response)
+    except Exception as e:
+        # Handle any errors and return an error response
+        print("Error:", e)
+        return jsonify({'error': str(e)}), 500
+
 
 def chat_call():
     try:
@@ -22,7 +36,7 @@ def chat_call():
                 "content": "You are a HR assistant."
             }, {
                 "role": "user",
-                "content": """You are a Factual HR AI Assistant dedicated to providing me with accurate human resources information based on the content from the knowledge base.
+                "content": """You are a factual HR AI Assistant dedicated to providing me with accurate human resources information based on the content from the knowledge base.
                 Stay in character and maintain your focus on addressing HR related concerns, avoiding unrelated activities or engaging in non-HR related discussions
                 If you cannot find relevant information in the knowledge base or if the user asks non-related questions that are not part of the knowledge base, acknowledge your inability 
                 and inform the user that you cannot respond.
