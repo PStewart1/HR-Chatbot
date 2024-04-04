@@ -10,7 +10,10 @@ const predefinedAnswers = {
   'How much PTO can I get in a year?': 'You are entitled to 20 days of PTO per year.',
   'What benefits are offered?': 'We offer a range of benefits including health care, retirement plans, and more.',
   'How do I resign from my position?': 'You can resign by submitting a written notice to HR.',
-  // ... y así sucesivamente para cada pregunta
+  'What is the salary range for my role?': 'You salary will be xxxx',
+  'What are the standard work hours?': 'Our standard work hours are from 9 AM to 5 PM, Monday through Friday.',
+  'Can I Work Remotely?':'We offer flexible remote work options based on job roles and performance evaluations',
+  'What are the career path options?':'We have a structured career development program with opportunities for advancement and skill enhancement.',
 };
 
 const App = () => {
@@ -26,16 +29,19 @@ const App = () => {
 };
 
 const handleQuestionSelect = (question) => {
+  console.log("Question selected:", question);
   const userMessage = { id: Date.now(), text: question, sender: 'user' };
-  // Agregar inmediatamente la pregunta al chat
-  setMessages(messages => [...messages, userMessage]);
+  setMessages(currentMessages => [...currentMessages, userMessage]);
 
   const answer = predefinedAnswers[question];
+  console.log("Answer found:", answer);  // Para depurar
   if (answer) {
       setTimeout(() => {
-          const botResponse = { id: Date.now() + 1, text: answer, sender: 'bot' };
-          setMessages(messages => [...messages, botResponse]);
-      }, 1000); // Ajusta este tiempo según sea necesario
+          setMessages(currentMessages => [
+              ...currentMessages,
+              { id: Date.now() + 1, text: answer, sender: 'bot' }
+          ]);
+      }, 1000);
   }    
 };
 

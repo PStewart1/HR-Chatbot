@@ -2,19 +2,14 @@
 .header-bar {
   display: flex;
   font-size: larger;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center; 
-  padding: 10px 20px;
-  text-align: center;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  color: antiquewhite;
+  color: #022c66;
   font-weight: bold;
-  background-color: #022c66;
+  background-color: #ffffff;
 }
 
   .header-logo {
-  height: 10vh; 
+  height: 14vh; 
   border-radius: 35px;
-
 }

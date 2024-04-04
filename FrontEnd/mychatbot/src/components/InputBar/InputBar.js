@@ -30,7 +30,7 @@ const InputBar = ({ onSendMessage }) => {
         value={inputText}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
-        placeholder="Your Message Here..."
+        placeholder="Ask me anything..."
       />
       <button onClick={handleSendClick}>🚀</button>
     </div>
