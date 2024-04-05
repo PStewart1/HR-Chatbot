@@ -5,8 +5,8 @@ from langchain_mongodb.vectorstores import MongoDBAtlasVectorSearch
 from langchain_cohere import CohereEmbeddings
 from decouple import config
 from langchain_cohere.chat_models import ChatCohere
-import gradio as gr
-from gradio.themes.base import Base
+# import gradio as gr
+# from gradio.themes.base import Base
 from langchain.prompts import PromptTemplate
 
 
@@ -67,19 +67,19 @@ def query_data(query):
     return response["result"], response['source_documents']
 
 
-with gr.Blocks(theme=Base(), title="Demo for the backend") as demo:
-    gr.Markdown(
-        """
-        # Demo for the backend
-        """
-    )
-    textbox = gr.Textbox(label="Ask a question")
-    with gr.Row():
-        button = gr.Button("Submit", variant="primary")
-    with gr.Column():
-        output1 = gr.Textbox(lines=1,max_lines=10, label="Chat Answer")
-        output2 = gr.Textbox(lines=1,max_lines=10, label="Sources")
+# with gr.Blocks(theme=Base(), title="Demo for the backend") as demo:
+#     gr.Markdown(
+#         """
+#         # Demo for the backend
+#         """
+#     )
+#     textbox = gr.Textbox(label="Ask a question")
+#     with gr.Row():
+#         button = gr.Button("Submit", variant="primary")
+#     with gr.Column():
+#         output1 = gr.Textbox(lines=1,max_lines=10, label="Chat Answer")
+#         output2 = gr.Textbox(lines=1,max_lines=10, label="Sources")
 
-    button.click(query_data, textbox, outputs=[output1, output2])
+#     button.click(query_data, textbox, outputs=[output1, output2])
 
-demo.launch()
+# demo.launch()
