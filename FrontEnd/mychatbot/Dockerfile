@@ -18,3 +18,4 @@ CMD ["npm", "start"]
 
 # Exponer el puerto 3000 (o el que use tu aplicación React)
 EXPOSE 3000
+

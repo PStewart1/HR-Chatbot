@@ -10,26 +10,30 @@
   top: 0;
   height: 100vh;
   overflow-y: auto;
-  background-color: rgba(0, 166, 81, 0.25);
-  border-radius: 30px;
-  border: 2px solid #390083;
-  background-color: rgb(100, 109, 232);
+  border: 2px solid #ffffff;
+  background-color: #ffffff;
+  border-left: 1px solid #ef684a;  
+}
+.link-container h2{
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 100px;
+  color: #0047AB;
 
 }
 
 .link-container a {
   padding: 30px;
-  font-weight: bolder;
-  font-size: 30px;
-  display: block; /* Los enlaces se apilan verticalmente */
-  margin-bottom: 10px; /* Espacio entre enlaces */
-  color: #ffffff; /* Color del texto de los enlaces */
-  text-decoration: none; /* Quita el subrayado de los enlaces */
+  font-size: 15px;
+  display: block; 
+  margin-bottom: 10px;
+  color: #0047AB; 
+  text-decoration: none;
   transition: color 0.3s ease, font-size 0.3s ease; 
 
 }
 .link-container a:hover {
   color: #ef684a;
-  font-size: 35px;
+  font-size: 20px;
 
 }
