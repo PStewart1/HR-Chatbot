@@ -1,7 +1,6 @@
-# import os
 from dotenv import load_dotenv
 from flask import Flask, request
-# from extract_information import query_data
+from extract_information import query_data
 
 app = Flask(__name__)
 

@@ -13,6 +13,9 @@ from langchain.prompts import PromptTemplate
 load_dotenv()
 
 def get_vector_store():
+    """
+    
+    """
     # setup embeddings connection to Cohere llm
     coApiKey = config('COHERE_API_KEY')
     embeddings = CohereEmbeddings(model="embed-english-v3.0", cohere_api_key=coApiKey)
@@ -28,6 +31,11 @@ def get_vector_store():
     return vector_search
 
 def query_data(query):
+    """
+    This function takes in a query and returns 2 responses.
+    The first response is the chat response from the ai.
+    The second response is the source documents that the ai used to generate the response.
+    """
     vector_store = get_vector_store()
 
     llm = ChatCohere(model="command-r", temperature=0.1)
@@ -37,7 +45,8 @@ def query_data(query):
     You are a factual HR AI Assistant dedicated to providing me with accurate human resources information based on the content from the knowledge base.
     Stay in character and maintain your focus on addressing HR related concerns, avoiding unrelated activities or engaging in non-HR related discussions
     Your response must be in the same language as my request. If you cannot find relevant information in the given knowledge base or if the user asks non-related 
-    questions that are not part of the knowledge base, acknowledge your inability and inform the user that you cannot respond.
+    questions that are not part of the knowledge base, acknowledge your inability and inform the user that you cannot respond. 
+    Do not mention the knowledge base in your response.
 
     Knowledge Base: {context}
 
