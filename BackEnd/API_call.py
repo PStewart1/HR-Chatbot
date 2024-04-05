@@ -1,24 +1,27 @@
-from dotenv import load_dotenv
-from flask import Flask, request
+# from dotenv import load_dotenv
+from flask import Flask, request, redirect, url_for
 from extract_information import query_data
 
 app = Flask(__name__)
 
-load_dotenv()
+# install httpie and flask
+# start the api with flask
+# flask --app API_call.py run
+# open another terminal and run the http requests
+# http POST localhost:5000 query="what is the name of this company?"
 
-
-@app.route('/chat_data', methods=['POST', 'GET'])
-def chat_data(): 
-    
-    
-    # Get data from request 
-    data = request.json 
-    print()
-    # Insert data into MongoDB 
-    query_data.insert_one(data) 
-    
-  
-    return 'Data added to MongoDB'    
+@app.route('/', methods=['POST', 'GET'])
+def chat_data():
+    if request.method == 'POST':
+        # Get data from request 
+        data = request.json['query']
+        # print('data: ', data)
+        # pass query to query handler function
+        response = query_data(data) 
+        source_documents = response[1]
+        return response[0]
+    else:
+        return "Hello World"
 
 
 
