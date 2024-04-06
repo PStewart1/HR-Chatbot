@@ -1,46 +1,26 @@
-import os
-from openai import OpenAI
-from dotenv import load_dotenv
-from flask import Flask
+# from dotenv import load_dotenv
+from flask import Flask, request, redirect, url_for
+from extract_information import query_data
 
 app = Flask(__name__)
+app.config["DEBUG"] = True
 
-load_dotenv()
+# install all the dependencies in install-python-lin.sh
+# install flask and start the api
+# flask --app API_call.py run
 
-client = OpenAI()
-
-@app.route('/')
-def index():
-    return ''
-
-def chat_call():
-    try:
-        call = client.chat.completions.create(
-            model="text-davinci-003",  # Use the appropriate model
-            messages=[{
-                "role": "system", 
-                "content": "You are a HR assistant."
-            }, {
-                "role": "user",
-                "content": """You are Cody, a Factual HR AI Assistant dedicated to providing me with accurate human resources information based on the content from the knowledge base.
-                Stay in character and maintain your focus on addressing HR related concerns, avoiding unrelated activities or engaging in non-HR related discussions
-                If you cannot find relevant information in the knowledge base or if the user asks non-related questions that are not part of the knowledge base, acknowledge your inability 
-                and inform the user that you cannot respond.
-                Your response must be in the same language as my request"""
-            }]
-        )
-        return call
-    except Exception as e:
-        print("Error:", e)
-        return None
-
-def query_call(): 
-    query = client.embeddings.create(
-        model="text-embedding-ada-002",
-        input="",
-        encoding_format="float"
-    )
-    return query
+@app.route('/', methods=['POST', 'GET'])
+def chat_data():
+    if request.method == 'POST':
+        # Get data from request 
+        data = request.json['query']
+        # print('data: ', data)
+        # pass query to query handler function
+        response = query_data(data) 
+        source_documents = response[1]
+        return response[0]
+    else:
+        return "Hello! What can I help you with today?"
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(host="0.0.0.0", port=5000)
