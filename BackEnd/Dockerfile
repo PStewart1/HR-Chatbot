@@ -1,7 +1,18 @@
-FROM python:3.13-rc-alpine
+FROM python:3.10-alpine
 
-ADD main.py .
+WORKDIR /BackEnd
 
-RUN pip install -q langchain==0.0.150 pypdf pandas matplotlib tiktoken textract transformers openai faiss-cpu requests  python-dotenv
+COPY . .
 
-CMD [“python3”, “./main.py”]
+RUN pip install langchain langchain-community langchain-mongodb langchain_cohere pymongo cohere 
+RUN pip install flask tiktoken python-dotenv python-decouple requests httpie
+# RUN pip install pypdf pypdf2 streamlit gradio
+
+EXPOSE 5000
+
+CMD ["python3", "API_call.py"]
+
+# start docker
+# navigate to this directory: "cd HR-Chatbot/BackEnd"
+# run "docker build -t chatbot_backend:latest ."
+# run "docker run -p 5000:5000 chatbot_backend:latest" 
