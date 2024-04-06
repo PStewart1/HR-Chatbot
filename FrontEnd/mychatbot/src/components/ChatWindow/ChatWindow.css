@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  border-radius: 30px;
   overflow: hidden;
   background-color: #022c66;
 }
@@ -12,12 +11,10 @@
 .chat-window {
   flex-grow: 1;
   padding: 20px;
-  background-color: #022c66; /* Color de fondo con transparencia */
+  background-color: #ffffff; /* Color de fondo con transparencia */
   overflow-y: auto;
-  border-radius: 30px;
   color: antiquewhite; /* Color del texto */
   font-size: 30px; /* Tamaño del texto */
-  border-left: 1px solid #e0e0e0;  
 }
 
 .message {
