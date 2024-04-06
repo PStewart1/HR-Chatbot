@@ -3,10 +3,17 @@ from flask import Flask, request, redirect, url_for
 from extract_information import query_data
 
 app = Flask(__name__)
+app.config["DEBUG"] = True
 
-# install httpie and flask
-# start the api with flask
+# create a .env file and add the DB_CONNECTION and COHERE_API_KEY variables
+
+# install all the dependencies in the dockerfile
+# install flask and start the api
 # flask --app API_call.py run
+
+# OR
+# start the docker container. instructions in the docker file
+# install httpie
 # open another terminal and run the http requests
 # http POST localhost:5000 query="what is the name of this company?"
 
@@ -27,4 +34,4 @@ def chat_data():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(host="0.0.0.0", port=5000)
