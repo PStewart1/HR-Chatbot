@@ -11,7 +11,7 @@ Navigate to this directory:
 cd HR-Chatbot/BackEnd
 ```
 
-Build the Docker image:
+Build the Docker image (don't forget the the period at the end):
 ```shell
 docker build -t chatbot_backend:latest .
 ```
