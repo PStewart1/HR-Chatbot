@@ -2,7 +2,7 @@
 
 ## Backend instructions
 
-Install Docker if you haven't already
+Install [Docker](https://docs.docker.com/get-docker/) if you haven't already
 
 Create a *.env* file and add the `DB_CONNECTION` and `COHERE_API_KEY` variables. DM me for them.
 
@@ -20,9 +20,9 @@ Wait for it to finish, then start it up:
 ```shell
 docker run -p 5000:5000 chatbot_backend:latest
 ```
+Install [httpie](https://httpie.io/cli)
 
-Open a new terminal, and install httpie.
-Here you can now talk to the api making http calls
+Open a new terminal. Here you can now talk to the api making http calls
 ```shell
 http GET localhost:5000
 ```
@@ -36,13 +36,13 @@ http POST localhost:5000 query="what is the name of this company?"
 
 
 <!-- 1. [What is node-app-http-docker ❓](#what-is-node-app-http-docker-)
-2. [Project setup 💼](#project-setup-)
-3. [Running docker 🐋](#running-docker-)
+1. [Project setup 💼](#project-setup-)
+2. [Running docker 🐋](#running-docker-)
    * [Verify docker Image 🖼️](#verify-docker-image-) 
-4. [Running docker Image 🎽](#running-docker-image-)
-5. [Testing (is it working) ✅ ❎](#testing-is-it-working-)
-6. [STOPPING docker (running container) 🛑](#stopping-docker-docker-container-)
-7. [MIT LICENSE 🛡️ ](#license-)
+3. [Running docker Image 🎽](#running-docker-image-)
+4. [Testing (is it working) ✅ ❎](#testing-is-it-working-)
+5. [STOPPING docker (running container) 🛑](#stopping-docker-docker-container-)
+6. [MIT LICENSE 🛡️ ](#license-)
 
 
 ## What is node-app-http-docker ❓
