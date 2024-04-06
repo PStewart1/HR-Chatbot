@@ -1,39 +1,38 @@
 /* LinkComponent.css */
 .link-container {
-  line-height: 1.1;
   display: flex;
-  width: 25%;
   flex-direction: column;
-  align-items: right;
+  align-items: normal;
+  justify-content:start; 
+  width: 20%; 
+  min-width: 187px; 
+  max-width: 226px;
+  height: inherit; 
+  margin: auto; 
   padding: 20px;
-  right: 0;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-  border: 2px solid #ffffff;
-  background-color: #ffffff;
-  border-left: 1px solid #ef684a;  
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  border: 1px  #000000;
 }
-.link-container h2{
+.link-container h2 {
   text-align: center;
-  font-size: 24px;
-  margin-bottom: 100px;
-  color: #0047AB;
-
+  font-size: 26px;
+  margin-bottom: 20px; /* Reducir el margen para compactar el espacio */
+  color: #0c489c;
 }
 
 .link-container a {
-  padding: 30px;
+  padding: 20px; /* Reducir el padding para que los enlaces sean más compactos */
   font-size: 15px;
-  display: block; 
-  margin-bottom: 10px;
-  color: #0047AB; 
+  display: block;
+  margin-bottom: 13px; /* Menor espacio entre enlaces */
+  color: #0047AB;
   text-decoration: none;
-  transition: color 0.3s ease, font-size 0.3s ease; 
-
+  font-weight: bold; 
+  transition: color 0.3s ease, font-size 0.3s ease;
 }
+
 .link-container a:hover {
   color: #ef684a;
-  font-size: 20px;
-
+  font-size: 17px; /* Aumento sutil al pasar el cursor */
 }

@@ -27,20 +27,20 @@
   transition: opacity 0.7s ease-in-out;
 }
 
-
 .message.user {
-  background-color: rgb(100, 109, 232); /* Color distinto para el usuario */
+  background-color: #ffffff; /* Fondo blanco */
   align-self: flex-end;
   margin-left: auto;
   font-size: medium;
+  color: rgba(0, 71, 171, 0.8); /* Tipografía azul con ligera transparencia */
 }
 
 .message.bot {
-  background-color: #00695c; /* Color distinto para el bot */
+  background-color: #ffffff; /* Fondo blanco */
   align-self: flex-start;
-  margin-right: auto; /* Alinear a la izquierda */
+  margin-right: auto;
   font-size: medium;
-  opacity: 0;
+  color: rgba(220, 82, 82, 0.8); /* Tipografía roja con ligera transparencia */
 }
 
 .input-bar input {
