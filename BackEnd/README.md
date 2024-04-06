@@ -4,12 +4,11 @@
 
 Install [Docker](https://docs.docker.com/get-docker/) if you haven't already
 
-Create a *.env* file and add the `DB_CONNECTION` and `COHERE_API_KEY` variables. DM me for them.
-
 Navigate to this directory:
 ```shell
 cd HR-Chatbot/BackEnd
 ```
+Create a *.env* file and add the `DB_CONNECTION` and `COHERE_API_KEY` variables. DM me for them.
 
 Build the Docker image (don't forget the the period at the end):
 ```shell
