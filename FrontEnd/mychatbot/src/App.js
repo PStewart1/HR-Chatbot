@@ -1,5 +1,5 @@
 // App.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SideBar from './components/SideBar/SideBar';
 import ChatWindow from './components/ChatWindow/ChatWindow';
 import InputBar from './components/InputBar/InputBar';
@@ -18,6 +18,7 @@ const predefinedAnswers = {
 
 const App = () => {
   const [messages, setMessages] = useState([]);
+  
   const handleSendMessage = (text) => {
     const newMessage = { id: Date.now(), text: text, sender: 'user' };
     setMessages(currentMessages => {
@@ -26,24 +27,23 @@ const App = () => {
         console.log("After update:", updatedMessages);
         return updatedMessages;
     });
-};
+  };
 
-const handleQuestionSelect = (question) => {
-  console.log("Question selected:", question);
-  const userMessage = { id: Date.now(), text: question, sender: 'user' };
-  setMessages(currentMessages => [...currentMessages, userMessage]);
-
-  const answer = predefinedAnswers[question];
-  console.log("Answer found:", answer);  // Para depurar
-  if (answer) {
+  const handleQuestionSelect = (question) => {
+    console.log("Question selected:", question);
+    const userMessage = { id: Date.now(), text: question, sender: 'user' };
+    setMessages(currentMessages => [...currentMessages, userMessage]);
+    const answer = predefinedAnswers[question];
+    console.log("Answer found:", answer);  // Para depurar - To purify
+    if (answer) {
       setTimeout(() => {
-          setMessages(currentMessages => [
-              ...currentMessages,
-              { id: Date.now() + 1, text: answer, sender: 'bot' }
-          ]);
+        setMessages(currentMessages => [
+          ...currentMessages,
+          { id: Date.now() + 1, text: answer, sender: 'bot' }
+        ]);
       }, 1000);
-  }    
-};
+    }    
+  };
 
   return (
     <div className="App" >
@@ -55,5 +55,6 @@ const handleQuestionSelect = (question) => {
       <LinkComponent />
     </div>
   );
-  }
+}
+
 export default App;
