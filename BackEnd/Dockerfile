@@ -14,5 +14,5 @@ CMD ["python3", "API_call.py"]
 
 # start docker
 # navigate to this directory: "cd HR-Chatbot/BackEnd"
-# run "docker build -t hr_chatbot_back:latest ."
-# run "docker run -p 5000:5000 hr_chatbot_back:latest" 
+# run "docker build -t chatbot_backend:latest ."
+# run "docker run -p 5000:5000 chatbot_backend:latest" 
