@@ -1,4 +1,4 @@
-#!/Users/jdara/github_projects/HR-Chatbot/BackEnd/bin/python3.12
+#!/Users/jdara/github_projects/HR-Chatbot/BackEnd/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

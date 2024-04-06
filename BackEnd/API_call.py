@@ -1,6 +1,7 @@
 # from dotenv import load_dotenv
 from flask import Flask, request, redirect, url_for
 from extract_information import query_data
+import requests
 
 app = Flask(__name__)
 
@@ -15,7 +16,7 @@ def chat_data():
     if request.method == 'POST':
         # Get data from request 
         data = request.json['query']
-        # print('data: ', data)
+        print('data: ', data)
         # pass query to query handler function
         response = query_data(data) 
         source_documents = response[1]
@@ -23,6 +24,15 @@ def chat_data():
     else:
         return "Hello World"
 
+@app.route('/tu-endpoint-de-chatbot', methods=['POST', 'GET'])
+def chat_call():
+    chat = 'FrontEnd/script.js'
+    response = requests.get(chat)
+    
+    if response.status_code:
+        data = response.json()
+    message = data['message']
+    return(message) 
 
 
 
