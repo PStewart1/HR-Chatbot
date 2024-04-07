@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import SideBar from './components/SideBar/SideBar';
 import ChatWindow from './components/ChatWindow/ChatWindow';
 import InputBar from './components/InputBar/InputBar';
+import LinkComponent from './components/LinkComponent/LinkComponent';
 import './App.css';
 
 const predefinedAnswers = {
@@ -17,40 +18,57 @@ const predefinedAnswers = {
 
 const App = () => {
   const [messages, setMessages] = useState([]);
-
-  const handleSendMessage = (text) => {
+  const handleSendMessage = async (text) => {
     const newMessage = { id: Date.now(), text: text, sender: 'user' };
-    setMessages(currentMessages => {
-        console.log("Before update:", currentMessages);
-        const updatedMessages = [...currentMessages, newMessage];
-        console.log("After update:", updatedMessages);
-        return updatedMessages;
+    setMessages([...messages, newMessage]);
+
+  try {
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query: text }),
     });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const responseData = await response.json();
+    const botMessage = { id: Date.now() + 1, text: responseData, sender: 'bot' };
+    setMessages((prevMessages) => [...prevMessages, botMessage]);
+  } catch (error) {
+    console.error('Error sending message to server:', error);
+  }
 };
 
 const handleQuestionSelect = (question) => {
+  console.log("Question selected:", question);
   const userMessage = { id: Date.now(), text: question, sender: 'user' };
-  // Agregar inmediatamente la pregunta al chat
-  setMessages(messages => [...messages, userMessage]);
+  setMessages(currentMessages => [...currentMessages, userMessage]);
 
   const answer = predefinedAnswers[question];
+  console.log("Answer found:", answer);  // Para depurar
   if (answer) {
       setTimeout(() => {
-          const botResponse = { id: Date.now() + 1, text: answer, sender: 'bot' };
-          setMessages(messages => [...messages, botResponse]);
-      }, 1000); // Ajusta este tiempo según sea necesario
+          setMessages(currentMessages => [
+              ...currentMessages,
+              { id: Date.now() + 1, text: answer, sender: 'bot' }
+          ]);
+      }, 1000);
   }    
 };
 
   return (
-    <div className="App">
-      <SideBar />
+    <div className="App" >
+      <SideBar onQuestionSelect={handleQuestionSelect} />
       <div className="chat-area">
         <ChatWindow messages={messages} />
         <InputBar onSendMessage={handleSendMessage} />
       </div>
+      <LinkComponent />
     </div>
   );
-};
-
+  }
 export default App;

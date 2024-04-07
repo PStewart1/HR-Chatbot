@@ -1,5 +1,5 @@
 # from dotenv import load_dotenv
-from flask import Flask, request, redirect, url_for
+from flask import Flask,jsonify, request, redirect, url_for
 from extract_information import query_data
 import requests
 
@@ -24,17 +24,6 @@ def chat_data():
     else:
         return "Hello World"
 
-@app.route('/tu-endpoint-de-chatbot', methods=['POST', 'GET'])
-def chat_call():
-    chat = 'FrontEnd/script.js'
-    response = requests.get(chat)
-    
-    if response.status_code:
-        data = response.json()
-    message = data['message']
-    return(message) 
-
-
-
+  
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
