@@ -16,32 +16,32 @@ function Sidebar({ onQuestionSelect }) {
     <div className="sidebar">
       <h2 className="sidebar-title">FAQ</h2>
       <button onClick={() => onQuestionSelect('How much PTO can I get in a year?')}>
-        <img src={ptoImage} alt="PTO Inquiry"/>
-        <span> PTO </span>
+        <img src={ptoImage} alt="PTO"/> 
+        <span> PTO  </span>
       </button>
       <button onClick={() => onQuestionSelect('What benefits are offered?')}>
-        <img src={benefitsImage} alt="Benefits Inquiry"/>
-        <span> Benefits </span>
+        <img src={benefitsImage} alt="Benefits"/> 
+        <span> Benefits  </span>
       </button>
       <button onClick={() => onQuestionSelect('How do I resign from my position?')}>
-        <img src={resignationImage} alt="Resignation Inquiry"/>
+        <img src={resignationImage} alt="Resignation"/> 
         <span> Resignation </span>
       </button>
       <button onClick={() => onQuestionSelect('What is the salary range for my role?')}>
-        <img src={salaryImage} alt="Salary Inquiry" />
+        <img src={salaryImage} alt="Salary" /> 
         <span> Salary </span>
       </button>
       <button onClick={() => onQuestionSelect('What are the standard work hours?')}>
-        <img src={workHoursImage} alt="Work Hours Inquiry" />
-        <span> Work Hours </span>
+        <img src={workHoursImage} alt="Work Hours" /> 
+        <span> Work Hours</span>
       </button>
       <button onClick={() => onQuestionSelect('Can I work remotely?')}>
-        <img src={remoteWorkImage} alt="Remote Work Inquiry" />
+        <img src={remoteWorkImage} alt="Remote Work" /> 
         <span> Remote Work </span>
       </button>
       <button onClick={() => onQuestionSelect('What are the career path options?')}>
-        <img src={careerPathImage} alt="Career Path Inquiry" />
-        <span> Career Path </span>
+        <img src={careerPathImage} alt="Career Path" /> 
+        <span> Career path</span>
       </button>
       {/* Agrega más botones según sea necesario */}
     </div>
