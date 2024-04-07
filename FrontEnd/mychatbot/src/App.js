@@ -12,7 +12,7 @@ const predefinedAnswers = {
   'How do I resign from my position?': 'You can resign by submitting a written notice to HR.',
   'What is the salary range for my role?': 'You salary will be xxxx',
   'What are the standard work hours?': 'Our standard work hours are from 9 AM to 5 PM, Monday through Friday.',
-  'Can I Work remotely?':'We offer flexible remote work options based on job roles and performance evaluations',
+  'Can I work remotely?':'We offer flexible remote work options based on job roles and performance evaluations',
   'What are the career path options?':'We have a structured career development program with opportunities for advancement and skill enhancement.',
 };
 
