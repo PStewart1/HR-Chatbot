@@ -5,17 +5,21 @@
 }
 
 .sidebar {
-  width: 25%; /* el ancho que prefieras para la barra lateral */
+  flex: 0 0 20%; 
 }
 
 .chat-container {
-  width: 75%;
+  width: 3;
   display: flex;
   flex-direction: column;
+  flex-grow: 1; /* Asegura que chat-area tome todo el espacio vertical disponible */
+
 }
 
 .chat-area {
   display: flex;
   flex-direction: column;
   flex-grow: 1; 
+
+
 }

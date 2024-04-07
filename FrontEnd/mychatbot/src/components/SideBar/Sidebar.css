@@ -3,20 +3,18 @@
 .sidebar {
   padding: 20px;
   overflow-y: auto;
-  background-color: #252a38;
-  border-radius: 30px;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
+
 }
 
 .sidebar-title {
-  color: antiquewhite;
+  color: #023b8a;
   padding: 10px 20px;
   margin: 0 0 20px 0; 
-  text-align: center;
-  font-size: 50px;
-
+  text-align: start;
+  font-size: 30px;
 }
-
-/* Sidebar.css */
 
 .sidebar button {
   display: flex;
@@ -25,29 +23,33 @@
   padding: 10px;
   margin-bottom: 20px;
   width: 100%;
-  background-color: #4d244b;
+  background-color: #0047AB;
   border: none;
-  border-radius: 30px;
+  border-radius: 20px;
   cursor: pointer;
   color: antiquewhite;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Suaviza la transformación y el cambio de color */
 }
 
 .sidebar button span {
-  font-size: 1.4vw;
+  font-size: calc(1vw + 1px);
   font-weight: bold; 
   font-family: 'Poppins', sans-serif !important;  
   flex: 1;
   margin-left: 10px; 
+  overflow: hidden; /* Previene desbordamiento del texto */
+  text-overflow: ellipsis; /* Añade "..." si el texto es muy largo */
+  white-space: nowrap; /* Mantiene el texto en una sola línea */
 }
 
 /* Imágenes de los botones del Sidebar */
 .sidebar button img {
-  max-width: 55%; /* Limita la imagen a un porcentaje del botón para dejar espacio al texto */
+  max-width: 23%; 
   height: auto;
   object-fit: contain;
-  border-radius: 30px;
+  border-radius: 15px;
 }
 
 .sidebar button:hover {
-  background-color: #2e702e;
+  background-color: #FF5733;
 }

@@ -2,19 +2,20 @@
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Ajusta la altura total de la ventana de visualización */
+  height: 100vh;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: #022c66;
 }
 
 /* Estilos para la ventana de chat */
 .chat-window {
   flex-grow: 1;
   padding: 20px;
-  background-color: #252a38; /* Color de fondo con transparencia */
+  background-color: #022c66; /* Color de fondo con transparencia */
   overflow-y: auto;
-  border-radius: 30px;
   color: antiquewhite; /* Color del texto */
   font-size: 30px; /* Tamaño del texto */
-  border-left: 1px solid #e0e0e0;  
 }
 
 .message {
@@ -26,21 +27,18 @@
 }
 
 .message.user {
-  background-color: #9b59b6; /* Un color más claro que el fondo para los mensajes del usuario */
-  align-self: flex-end; /* Alinear mensajes del usuario a la derecha */
+  background-color: rgb(100, 109, 232); /* Color distinto para el usuario */
+  align-self: flex-end;
+  margin-left: auto;
+  font-size: medium;
 }
 
 .message.bot {
-  background-color: #8e44ad; /* Un color distinto para los mensajes del bot */
-  align-self: flex-start; /* Alinear mensajes del bot a la izquierda */
-}
-
-/* Estilos para el InputBar.css */
-.input-bar {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #8e44ad; /* Hacer que el InputBar tenga el mismo color de fondo que los mensajes del bot */
+  background-color: #00695c; /* Color distinto para el bot */
+  align-self: flex-start;
+  margin-right: auto; /* Alinear a la izquierda */
+  font-size: medium;
+  opacity: 0;
 }
 
 .input-bar input {
