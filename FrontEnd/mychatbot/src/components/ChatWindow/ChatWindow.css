@@ -29,14 +29,14 @@
 
 
 .message.user {
-  background-color: rgb(100, 109, 232); /* Color distinto para el usuario */
+  background-color: rgb(0, 71, 171); /* Color distinto para el usuario */
   align-self: flex-end;
   margin-left: auto;
   font-size: medium;
 }
 
 .message.bot {
-  background-color: #00695c; /* Color distinto para el bot */
+  background-color: #FF5733; /* Color distinto para el bot */
   align-self: flex-start;
   margin-right: auto; /* Alinear a la izquierda */
   font-size: medium;
