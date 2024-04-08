@@ -5,7 +5,6 @@
   overflow-y: auto;
   background-color: rgb(255, 255, 255);
   border-color: rgb(255, 255, 255);
-  border-right: 1px solid #ef684a;  
 
 }
 
@@ -13,42 +12,44 @@
   color: #023b8a;
   padding: 10px 20px;
   margin: 0 0 20px 0; 
-  text-align: center;
-  font-size: 50px;
+  text-align: start;
+  font-size: 30px;
 }
-
-/* Sidebar.css */
 
 .sidebar button {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px;
-  margin-bottom: 20px;
-  width: 100%;
+  padding: 2px;
+  margin-bottom: 10px;
   background-color: #0047AB;
   border: none;
-  border-radius: 30px;
+  border-radius: 20px;
   cursor: pointer;
   color: antiquewhite;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Suaviza la transformación y el cambio de color */
 }
 
 .sidebar button span {
-  font-size: 1.4vw;
+  font-size: calc(1vw + 1px);
   font-weight: bold; 
   font-family: 'Montserrat', sans-serif !important;  
   flex: 1;
   margin-left: 10px; 
+  overflow: hidden; /* Previene desbordamiento del texto */
+  text-overflow: ellipsis; /* Añade "..." si el texto es muy largo */
+  white-space: nowrap; /* Mantiene el texto en una sola línea */
 }
 
 /* Imágenes de los botones del Sidebar */
 .sidebar button img {
-  max-width: 30%; 
+  max-width: 23%; 
   height: auto;
   object-fit: contain;
-  border-radius: 30px;
+  border-radius: 15px;
 }
 
 .sidebar button:hover {
   background-color: #FF5733;
+  transform: scale(1.08);
 }
