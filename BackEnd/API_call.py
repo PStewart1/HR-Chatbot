@@ -10,18 +10,22 @@ app.config["DEBUG"] = True
 # install flask and start the api
 # flask --app API_call.py run
 
-@app.route('/chat_data', methods=['POST', 'GET'])
+@app.route('/', methods=['GET'])
+def home():
+    return "Hello! What can I help you with today?"
+
+@app.route('/chat', methods=['POST'])
 def chat_data():
-    if request.method == 'POST':
-        # Get data from request 
-        data = request.json['query']
-        print('data: ', data)
-        # pass query to query handler function
-        response = query_data(data) 
-        source_documents = response[1]
-        return response[0]
-    else:
-        return "Hello! What can I help you with today?"
+    # if request.method == 'POST':
+    # Get data from request 
+    data = request.json['query']
+    # print('data: ', data)
+    # pass query to query handler function
+    response = query_data(data) 
+    source_documents = response[1]
+    return response[0]
+    # else:
+    #     return "Hello! What can I help you with today?"
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000)

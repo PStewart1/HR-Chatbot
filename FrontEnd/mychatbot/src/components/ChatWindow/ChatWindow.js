@@ -1,22 +1,9 @@
 import React, { useState } from 'react';
 import './ChatWindow.css';
+import HeaderBar from '../HeaderBar/HeaderBar'; 
 
-const ChatWindow = () => {
-  const [messages, setMessages] = useState([]);
-
-  const sendMessage = (text) => {
-    // Aquí conectarías con tu backend para enviar el texto
-    // y luego actualizarías el estado con la respuesta del chatbot
-    const newMessage = { id: Date.now(), text: text, sender: 'user' };
-    setMessages([...messages, newMessage]);
-
-    // Simular una respuesta del chatbot
-    setTimeout(() => {
-      const botResponse = { id: Date.now(), text: '¡Hola! ¿En qué puedo ayudarte?', sender: 'bot' };
-      setMessages((prevMessages) => [...prevMessages, botResponse]);
-    }, 1000);
-  };
-
+const ChatWindow = ({ messages }) => {
+  // console.log('Messages in ChatWindow.js:', messages);
   return (
     <div className="chat-window">
       <div className="chat-header">
