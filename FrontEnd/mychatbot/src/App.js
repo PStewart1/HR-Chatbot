@@ -63,7 +63,7 @@
 
 // App.js
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import SideBar from './components/SideBar/SideBar';
 import ChatWindow from './components/ChatWindow/ChatWindow';
 import InputBar from './components/InputBar/InputBar';
@@ -72,9 +72,9 @@ import './App.css';
 
 //import { BASE_URL } from './config';  
 
-const api = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_URL,
-});
+// const api = axios.create({
+//   baseURL: process.env.REACT_APP_BACKEND_URL,
+// });
 
 const predefinedAnswers = {
   'How much PTO can I get in a year?': 'You are entitled to 20 days of PTO per year.',
@@ -95,7 +95,6 @@ function App() {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({ query: messages }),
-  mode: 'no-cors'
 })
     .then(response => {
       if (!response.ok) {
