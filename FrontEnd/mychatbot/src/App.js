@@ -63,7 +63,7 @@
 
 // App.js
 import React, { useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import SideBar from './components/SideBar/SideBar';
 import ChatWindow from './components/ChatWindow/ChatWindow';
 import InputBar from './components/InputBar/InputBar';
@@ -88,30 +88,8 @@ const predefinedAnswers = {
   'What are the career path options?': 'We have a structured career development program with opportunities for advancement and skill enhancement.',
 };
 
-function App() {
+const App = () => {
   const [messages, setMessages] = useState([]);
-
-  fetch('https://hr-chatbot-ildr.onrender.com', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ query: messages }),
-})
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Success:', data);
-      // Handle successful response here
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      // Handle errors here
-});
 
   const handleSendMessage = (text) => {
     const newMessage = { id: Date.now(), text: text, sender: 'user' };

@@ -1,10 +1,12 @@
 # from dotenv import load_dotenv
-from flask import Flask,jsonify, request, redirect, url_for
+from flask import Flask, request, redirect, url_for
 from extract_information import query_data
-import requests
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
+CORS(app)
+
 
 # install all the dependencies in install-python-lin.sh
 # install flask and start the api
