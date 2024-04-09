@@ -1,5 +1,5 @@
 // App.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SideBar from './components/SideBar/SideBar';
 import ChatWindow from './components/ChatWindow/ChatWindow';
 import InputBar from './components/InputBar/InputBar';
@@ -19,16 +19,14 @@ const predefinedAnswers = {
 function App() {
   const [messages, setMessages] = useState([]);
 
-  useEffect(() =>  {
-    fetch("/chat_data").then(
-        res => res.json()
-    ).then(
-        messages => {
-            setMessages(messages) 
-            console.log(messages)
-        }
-    )
-}, [])
+  fetch('https://hr-chatbot-ildr.onrender.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query: messages }),
+  })
+
   const handleSendMessage = (text) => {
     const newMessage = { id: Date.now(), text: text, sender: 'user' };
     setMessages(currentMessages => {
