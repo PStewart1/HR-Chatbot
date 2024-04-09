@@ -11,7 +11,7 @@ app = Flask(__name__)
 # open another terminal and run the http requests
 # http POST localhost:5000 query="what is the name of this company?"
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/chat_data', methods=['POST', 'GET'])
 def chat_data():
     if request.method == 'POST':
         # Get data from request 
@@ -23,6 +23,8 @@ def chat_data():
         return response[0]
     else:
         return "Hello World"
+    
+
 
   
 if __name__ == '__main__':

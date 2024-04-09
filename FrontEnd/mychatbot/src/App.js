@@ -1,5 +1,5 @@
 // App.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SideBar from './components/SideBar/SideBar';
 import ChatWindow from './components/ChatWindow/ChatWindow';
 import InputBar from './components/InputBar/InputBar';
@@ -12,35 +12,32 @@ const predefinedAnswers = {
   'How do I resign from my position?': 'You can resign by submitting a written notice to HR.',
   'What is the salary range for my role?': 'You salary will be xxxx',
   'What are the standard work hours?': 'Our standard work hours are from 9 AM to 5 PM, Monday through Friday.',
-  'Can I Work remotely?':'We offer flexible remote work options based on job roles and performance evaluations',
+  'Can I work remotely?':'We offer flexible remote work options based on job roles and performance evaluations',
   'What are the career path options?':'We have a structured career development program with opportunities for advancement and skill enhancement.',
 };
 
-const App = () => {
+function App() {
   const [messages, setMessages] = useState([]);
-  const handleSendMessage = async (text) => {
-    const newMessage = { id: Date.now(), text: text, sender: 'user' };
-    setMessages([...messages, newMessage]);
 
-  try {
-    const response = await fetch('/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query: text }),
+  useEffect(() =>  {
+    fetch("/chat_data").then(
+        res => res.json()
+    ).then(
+        messages => {
+            setMessages(messages)
+            console.log(messages)
+        }
+    )
+}, [])
+  const handleSendMessage = (text) => {
+    const newMessage = { id: Date.now(), text: text, sender: 'user' };
+    setMessages(currentMessages => {
+        console.log("Before update:", currentMessages);
+        const updatedMessages = [...currentMessages, newMessage];
+        console.log("After update:", updatedMessages);
+        return updatedMessages;
     });
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const responseData = await response.json();
-    const botMessage = { id: Date.now() + 1, text: responseData, sender: 'bot' };
-    setMessages((prevMessages) => [...prevMessages, botMessage]);
-  } catch (error) {
-    console.error('Error sending message to server:', error);
-  }
 };
 
 const handleQuestionSelect = (question) => {
@@ -59,6 +56,8 @@ const handleQuestionSelect = (question) => {
       }, 1000);
   }    
 };
+
+
 
   return (
     <div className="App" >
