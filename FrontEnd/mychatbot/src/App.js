@@ -70,11 +70,10 @@ import InputBar from './components/InputBar/InputBar';
 import LinkComponent from './components/LinkComponent/LinkComponent';
 import './App.css';
 
-// Suponiendo que tienes un archivo config.js que exporta la URL base
-import { BASE_URL } from './config';  
+//import { BASE_URL } from './config';  
 
 const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: process.env.REACT_APP_BACKEND_URL,
 });
 
 const predefinedAnswers = {
