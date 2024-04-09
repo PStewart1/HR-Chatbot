@@ -4,12 +4,11 @@ from extract_information import query_data
 import requests
 
 app = Flask(__name__)
+app.config["DEBUG"] = True
 
-# install httpie and flask
-# start the api with flask
+# install all the dependencies in install-python-lin.sh
+# install flask and start the api
 # flask --app API_call.py run
-# open another terminal and run the http requests
-# http POST localhost:5000 query="what is the name of this company?"
 
 @app.route('/chat_data', methods=['POST', 'GET'])
 def chat_data():
@@ -22,10 +21,7 @@ def chat_data():
         source_documents = response[1]
         return response[0]
     else:
-        return "Hello World"
-    
+        return "Hello! What can I help you with today?"
 
-
-  
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(host="0.0.0.0", port=5000)
