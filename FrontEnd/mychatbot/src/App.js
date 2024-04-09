@@ -20,12 +20,27 @@ function App() {
   const [messages, setMessages] = useState([]);
 
   fetch('https://hr-chatbot-ildr.onrender.com', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ query: messages }),
-  })
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ query: messages }),
+  mode: 'no-cors'
+})
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Success:', data);
+      // Handle successful response here
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      // Handle errors here
+});
 
   const handleSendMessage = (text) => {
     const newMessage = { id: Date.now(), text: text, sender: 'user' };
