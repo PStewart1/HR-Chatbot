@@ -1,4 +1,4 @@
 // config.js
-const BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+const BASE_URL = 'https://hr-chatbot-ildr.onrender.com';
 
 export { BASE_URL };
