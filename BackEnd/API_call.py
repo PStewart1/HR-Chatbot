@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-CORS(app)
+CORS(app, origins=["https://hr-chatbot-1.onrender.com/","207.162.137.211","http://localhost:3000"])
 
 
 # install all the dependencies in install-python-lin.sh
