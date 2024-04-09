@@ -24,7 +24,7 @@ function App() {
         res => res.json()
     ).then(
         messages => {
-            setMessages(messages)
+            setMessages(messages) 
             console.log(messages)
         }
     )
