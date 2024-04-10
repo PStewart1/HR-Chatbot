@@ -3,6 +3,8 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "dependencies": {
-    "axios": "^1.6.8"
+    "axios": "^1.6.8",
+    "react-pdf": "^7.7.1",
+    "react-pdf-viewer": "^0.1.0"
   }
 }
