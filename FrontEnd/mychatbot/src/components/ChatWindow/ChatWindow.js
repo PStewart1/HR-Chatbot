@@ -3,7 +3,7 @@ import './ChatWindow.css';
 import HeaderBar from '../HeaderBar/HeaderBar'; 
 
 const ChatWindow = ({ messages }) => {
-  console.log('Messages in ChatWindow:', messages);
+  // console.log('Messages in ChatWindow.js:', messages);
   return (
     <div className="chat-container">
       <HeaderBar />
