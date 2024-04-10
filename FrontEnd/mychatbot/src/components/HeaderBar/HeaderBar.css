@@ -1,15 +1,23 @@
 /* HeaderBar.css */
+@import url("../../App.css");
+
 .header-bar {
   display: flex;
-  font-size: larger;
+  font-size: var(--title-font-size);
   justify-content: center;
   align-items: center; 
-  color: #022c66;
   font-weight: bold;
-  background-color: #ffffff;
+  background-color: var(--white);
 }
 
-  .header-logo {
+.header-logo {
   height: 14vh; 
   border-radius: 35px;
+}
+
+/* For mobile phones: */
+@media only screen and (max-width: 600px) {
+  .header-logo {
+    height: 10vh;
+  }
 }

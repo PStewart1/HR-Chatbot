@@ -5,7 +5,7 @@ import './LinkComponent.css';
 const LinkComponent = () => {
   return (
     <div className="link-container">
-      <h2>Enterprise Resources</h2>
+      <h2>Resources</h2>
       <a href="https://docs.google.com/document/d/1c4hNRwKZSZ8Cv0JGvk4ZYy9dCgDZo5D28x1sLsSohjA/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
         New Client Onboarding
       </a>

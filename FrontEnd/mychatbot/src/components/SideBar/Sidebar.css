@@ -1,11 +1,10 @@
 /* Sidebar.css */
+@import url("../../App.css");
 
 .sidebar {
   padding: 20px;
   overflow-y: auto;
-  background-color: rgb(255, 255, 255);
-  border-color: rgb(255, 255, 255);
-
+  margin-top: 60px;
 }
 
 .sidebar-title {
@@ -13,16 +12,16 @@
   padding: 10px 20px;
   margin: 0 0 20px 0; 
   text-align: start;
-  font-size: 30px;
+  font-size: var(--header-font-size);
 }
 
-.sidebar button {
+.sidebar-buttons li {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 2px;
+  padding: var(--faq-padding);
   margin-bottom: 10px;
-  background-color: #0047AB;
+  background-color: var(--deep-blue);
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -30,26 +29,63 @@
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Suaviza la transformación y el cambio de color */
 }
 
-.sidebar button span {
-  font-size: calc(1vw + 1px);
+.sidebar-buttons li span {
+  font-size: var(--general-font-size);
   font-weight: bold; 
   font-family: 'Montserrat', sans-serif !important;  
   flex: 1;
   margin-left: 10px; 
-  overflow: hidden; /* Previene desbordamiento del texto */
-  text-overflow: ellipsis; /* Añade "..." si el texto es muy largo */
-  white-space: nowrap; /* Mantiene el texto en una sola línea */
+  overflow: hidden; /* Prevents text overflow */
+  white-space: nowrap; /* Keep the text in a single line */
+  text-overflow: ellipsis; /* Add "..." if the text is very long */
 }
 
 /* Imágenes de los botones del Sidebar */
-.sidebar button img {
+.sidebar-buttons li img {
   max-width: 23%; 
   height: auto;
   object-fit: contain;
   border-radius: 15px;
 }
 
-.sidebar button:hover {
-  background-color: #FF5733;
+.sidebar-buttons li:hover {
+  background-color: var(--warm-orange);
   transform: scale(1.08);
+}
+
+/* For mobile phones: */
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    padding: 10px;
+    margin-top: 15%;
+  }
+
+  .sidebar-buttons li img {
+    visibility: hidden;
+  }
+
+  .sidebar-buttons li {
+    padding-left: 0px;
+    gap: 0px;
+  }
+
+  .sidebar-buttons li span {
+    font-size: var(--mobile-font-size);
+    margin-left: 0px; 
+    text-align: left;
+  }
+
+  /* .sidebar-buttons {
+    visibility: hidden;
+  } */
+
+  .sidebar-title {
+    font-size: 20px;
+    background-color: var(--deep-blue);
+    color: var(--white);
+    border-radius: 15px;
+    padding-left: 12px;
+  }
+
+  
 }

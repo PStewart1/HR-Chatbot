@@ -1,5 +1,5 @@
 /* App.css */
-@import-normalize;
+@import 'normalize.css';
 
 :root {
   --deep-blue: #0047AB;
@@ -8,6 +8,15 @@
   --warm-orange: #FF5733;
   --vibrant-green: #00A651;
   --white: #FFFFFF;
+  --general-font-size: 1rem;
+  --header-font-size: 1.7rem;
+  --title-font-size: 2rem;
+  --mobile-font-size: 0.8rem;
+  --faq-padding: 0.5rem;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .App {
@@ -33,6 +42,4 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1; 
-
-
 }
