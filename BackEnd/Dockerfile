@@ -5,8 +5,8 @@ WORKDIR /BackEnd
 COPY . .
 
 RUN pip install langchain langchain-community langchain-mongodb langchain_cohere pymongo cohere 
-RUN pip install flask tiktoken python-dotenv python-decouple requests httpie
-# RUN pip install pypdf pypdf2 streamlit gradio
+RUN pip install flask tiktoken python-dotenv python-decouple requests flask-cors
+# RUN pip install pypdf pypdf2 streamlit gradio httpie
 
 EXPOSE 5000
 
