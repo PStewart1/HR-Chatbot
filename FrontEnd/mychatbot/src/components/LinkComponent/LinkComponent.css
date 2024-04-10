@@ -11,7 +11,7 @@
   max-width: 226px;
   height: inherit; 
   margin: auto; 
-  margin-top: 60px;
+  /* margin-top: 60px; */
   padding: 20px;
   background-color: var(--white);
   border-radius: 20px;
@@ -26,7 +26,7 @@
 
 .link-container a {
   padding: 20px; /* Reducir el padding para que los enlaces sean más compactos */
-  font-size: var(--general-font-size);
+  font-size: (var(--general-font-size));
   display: block;
   margin-bottom: 13px; /* Menor espacio entre enlaces */
   color: var(--deep-blue);
@@ -37,7 +37,7 @@
 
 .link-container a:hover {
   color: var(--warm-orange);
-  font-size: var(--general-font-size); /* Aumento sutil al pasar el cursor */
+  font-size: calc(var(--general-font-size) + 0.1rem); /* Aumento sutil al pasar el cursor */
 }
 
 /* For mobile phones: */

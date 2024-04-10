@@ -13,6 +13,7 @@
   --title-font-size: 2rem;
   --mobile-font-size: 0.8rem;
   --faq-padding: 0.5rem;
+  --chat-padding: 0.6rem;
 }
 
 * {
@@ -22,24 +23,29 @@
 .App {
   display: flex;
   height: 100vh;
-  flex-direction: row;
-
-}
-
-.sidebar {
-  flex: 0 0 20%; 
-}
-
-.chat-container {
-  width: 3;
-  display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Asegura que chat-area tome todo el espacio vertical disponible */
 
 }
 
-.chat-area {
+/* .App-header {
+  max-height: 10vh;
+} */
+
+.App-body {
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+  justify-content: space-between;
+  max-height: 85vh;
+}
+
+.App-chat-area {
   display: flex;
   flex-direction: column;
   flex-grow: 1; 
+}
+
+/* For mobile phones: */
+@media only screen and (max-width: 600px) {
+  
 }

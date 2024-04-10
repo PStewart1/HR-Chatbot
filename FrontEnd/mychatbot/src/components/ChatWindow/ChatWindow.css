@@ -7,6 +7,8 @@
   height: 100vh;
   overflow: hidden;
   background-color: var(--deep-blue);
+  width: 3;
+  flex-grow: 1; /* Assures that chat-ana take all the vertical space available */
 }
 
 /* Estilos para la ventana de chat */
@@ -21,8 +23,8 @@
 
 .message {
   max-width: 60%; /* Limita el ancho de las burbujas de mensajes */
-  margin-bottom: 10px;
-  padding: var(--faq-padding);
+  margin: 1.5rem 0rem;
+  padding: var(--chat-padding);
   border-radius: 15px; /* Bordes más redondeados para las burbujas de chat */
   color: var(--white);
   word-wrap: break-word; /* Asegura que el texto largo se envuelva correctamente */
@@ -44,6 +46,7 @@
   background-color: var(--light-orange); /* Fondo blanco */
   align-self: flex-start;
   margin-right: auto;
+  width: fit-content;
   /* color: #ffffff ; Tipografía roja con ligera transparencia */
 }
 

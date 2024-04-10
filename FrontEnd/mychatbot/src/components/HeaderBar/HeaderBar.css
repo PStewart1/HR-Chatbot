@@ -8,16 +8,17 @@
   align-items: center; 
   font-weight: bold;
   background-color: var(--white);
+  height: 12vh;
 }
 
 .header-logo {
-  height: 14vh; 
+  max-height: 100%;
   border-radius: 35px;
 }
 
 /* For mobile phones: */
 @media only screen and (max-width: 600px) {
   .header-logo {
-    height: 10vh;
+    max-height: 80%;
   }
 }

@@ -4,7 +4,8 @@
 .sidebar {
   padding: 20px;
   overflow-y: auto;
-  margin-top: 60px;
+  /* margin-top: 60px; */
+  flex: 0 0 20%;
 }
 
 .sidebar-title {
@@ -27,6 +28,7 @@
   cursor: pointer;
   color: antiquewhite;
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Suaviza la transformación y el cambio de color */
+  
 }
 
 .sidebar-buttons li span {
@@ -38,6 +40,8 @@
   overflow: hidden; /* Prevents text overflow */
   white-space: nowrap; /* Keep the text in a single line */
   text-overflow: ellipsis; /* Add "..." if the text is very long */
+  padding-right: .2rem;
+  text-align: center;
 }
 
 /* Imágenes de los botones del Sidebar */

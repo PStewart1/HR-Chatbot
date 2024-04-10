@@ -15,9 +15,6 @@ const LinkComponent = () => {
       <a href="https://docs.google.com/document/d/1iWD45tn8DlCR3iG71RMfRWuhRaYQsxRipziUzZFP-xM/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
         Sample FAQ
       </a>
-      <a href="https://docs.google.com/document/d/1iWD45tn8DlCR3iG71RMfRWuhRaYQsxRipziUzZFP-xM/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
-        Resources 
-      </a>
       {/* Otros enlaces importantes */}
     </div>
   );

@@ -5,16 +5,16 @@ import SideBar from './components/SideBar/SideBar';
 import ChatWindow from './components/ChatWindow/ChatWindow';
 import InputBar from './components/InputBar/InputBar';
 import LinkComponent from './components/LinkComponent/LinkComponent';
+import HeaderBar from './components/HeaderBar/HeaderBar'; 
 import './App.css';
 
 const predefinedAnswers = {
-  'How much PTO can I get in a year?': 'You are entitled to 20 days of PTO per year.',
-  'What benefits are offered?': 'We offer a range of benefits including health care, retirement plans, and more.',
-  'How do I resign from my position?': 'You can resign by submitting a written notice to HR.',
-  'What is the salary range for my role?': 'Your salary will be xxxxx.',
-  'What are the standard work hours?': 'Our standard work hours are from 9 AM to 5 PM, Monday through Friday.',
-  'Can I work remotely?': 'We offer flexible remote work options based on job roles and performance evaluations.',
-  'What are the career path options?': 'We have a structured career development program with opportunities for advancement and skill enhancement.',
+  'How much PTO do I get?': 'We offer unlimited PTO, but we encourage responsible time management and ensuring adequate coverage for your responsibilities when taking time off.',
+  'What benefits are offered?': 'We maintain a business casual dress code, with flexibility for remote work environments.',
+  'How do I request time off?': 'You can request time off by submitting a request through our HR system, Gusto. As we offer unlimited PTO, please ensure adequate coverage for your responsibilities when planning your time off.',
+  'What is the dress code policy?': 'Our standard work hours are from 9 AM to 5 PM, Monday through Friday.',
+  'Can I work remotely?': 'Yes, remote work is the default arrangement for all employees. We trust our team to manage their time effectively and maintain open communication while working remotely.',
+  'Can I request a leave of absence for personal reasons?': 'Employees may request a leave of absence for personal reasons, subject to approval by HR and management.',
 };
 
 const App = () => {
@@ -54,12 +54,21 @@ const App = () => {
 
   return (
     <div className="App">
-      <SideBar onQuestionSelect={handleQuestionSelect} />
-      <div className="chat-area">
-        <ChatWindow messages={messages} />
-        <InputBar onSendMessage={handleSendMessage} />
+      <div className="App-header">
+        <HeaderBar />
       </div>
-      <LinkComponent />
+      <div className="App-body">
+        <div className="App-sidebar">
+          <SideBar onQuestionSelect={handleQuestionSelect} />
+        </div>
+        <div className="App-chat-area">
+          <ChatWindow messages={messages} />
+          <InputBar onSendMessage={handleSendMessage} />
+        </div>
+        <div className="App-links">
+          <LinkComponent />
+        </div>
+      </div>
     </div>
   );
 }
