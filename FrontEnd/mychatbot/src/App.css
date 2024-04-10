@@ -1,4 +1,14 @@
 /* App.css */
+@import-normalize;
+
+:root {
+  --deep-blue: #0047AB;
+  --light-blue: #0061e7;
+  --light-orange: #ff7657;
+  --warm-orange: #FF5733;
+  --vibrant-green: #00A651;
+  --white: #FFFFFF;
+}
 
 .App {
   display: flex;

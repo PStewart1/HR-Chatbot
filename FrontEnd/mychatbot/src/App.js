@@ -32,7 +32,7 @@ const App = () => {
       .catch(error => {
         const errMessage = { id: Date.now(), text: "I'm sorry, I'm having a little trouble at the moment. Please try again later.", sender: 'bot' };
         setMessages(currentMessages => [...currentMessages, errMessage]);
-        console.error('Error fetching from backend:', error);
+        console.error('Error fetching from backend: ', error);
       });
   };
 

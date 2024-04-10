@@ -1,17 +1,19 @@
 /* ChatWindow.css */
+@import url("../../App.css");
+
 .chat-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
-  background-color: #022c66;
+  background-color: var(--deep-blue);
 }
 
 /* Estilos para la ventana de chat */
 .chat-window {
   flex-grow: 1;
   padding: 20px;
-  background-color: #ffffff; /* Color de fondo con transparencia */
+  background-color: var(--white); /* Color de fondo con transparencia */
   overflow-y: auto;
   color: antiquewhite; /* Color del texto */
   font-size: 30px; /* Tamaño del texto */
@@ -22,28 +24,33 @@
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 15px; /* Bordes más redondeados para las burbujas de chat */
-  color: #ffffff;
+  color: var(--white);
   word-wrap: break-word; /* Asegura que el texto largo se envuelva correctamente */
   transition: opacity 0.7s ease-in-out;
 }
 
 .message.user {
-  background-color: #ffffff; /* Fondo blanco */
+  background-color: var(--light-blue) ; /* Fondo blanco */
   align-self: flex-end;
+  text-align: right;
   margin-left: auto;
   font-size: medium;
-  color: rgba(0, 71, 171, 0.8); /* Tipografía azul con ligera transparencia */
+  /* color: #ffffff; Tipografía azul con ligera transparencia */
 }
 
 .message.bot {
-  background-color: #ffffff; /* Fondo blanco */
+  background-color: var(--light-orange); /* Fondo blanco */
   align-self: flex-start;
   margin-right: auto;
   font-size: medium;
-  color: rgba(220, 82, 82, 0.8); /* Tipografía roja con ligera transparencia */
+  /* color: #ffffff ; Tipografía roja con ligera transparencia */
 }
 
-.input-bar input {
+.chat-window .message {
+  opacity: 1;
+}
+
+/* .input-bar input {
   flex-grow: 1;
   margin-right: 10px;
   border: 2px solid #9b59b6;
@@ -52,11 +59,6 @@
   background-color: #ffffff;
   color: #333333;
 }
-
-.chat-window .message {
-  opacity: 1;
-}
-
 
 .input-bar button {
   padding: 10px 20px;
@@ -68,6 +70,6 @@
 }
 
 .input-bar button:hover {
-  background-color: #FF5733; /* Un color ligeramente diferente al hacer hover */
-}
+  background-color: var(--warm-orange); 
+} */
 
