@@ -25,17 +25,19 @@ const App = () => {
     setMessages(currentMessages => [...currentMessages, newMessage]);
     axios.post(process.env.REACT_APP_API_URL, { query: text })
       .then(response => {
-        console.log('Response from backend:', response);
+        console.log('Response from backend: ', response);
         const botMessage = { id: Date.now() + 1, text: response.data, sender: 'bot' };
         setMessages(currentMessages => [...currentMessages, botMessage]);
       })
       .catch(error => {
+        const errMessage = { id: Date.now(), text: "I'm sorry, I'm having a little trouble at the moment. Please try again later.", sender: 'bot' };
+        setMessages(currentMessages => [...currentMessages, errMessage]);
         console.error('Error fetching from backend:', error);
       });
   };
 
   const handleQuestionSelect = (question) => {
-    console.log("Question selected:", question);
+    console.log("Question selected: ", question);
     const userMessage = { id: Date.now(), text: question, sender: 'user' };
     setMessages(currentMessages => [...currentMessages, userMessage]);
 
