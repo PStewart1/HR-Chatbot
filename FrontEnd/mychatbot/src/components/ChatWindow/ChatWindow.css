@@ -50,8 +50,32 @@
   /* color: #ffffff ; Tipografía roja con ligera transparencia */
 }
 
+.message.auto {
+  background-color: var(--light-orange); /* Fondo blanco */
+  align-self: flex-start;
+  margin-right: auto;
+  width: fit-content;
+  /* color: #ffffff ; Tipografía roja con ligera transparencia */
+}
+
 .chat-window .message {
   opacity: 1;
+}
+
+.response button {
+  background-color: var(--vibrant-green); /* Fondo verde */
+  color: var(--white); /* Tipografía blanca */
+  border: none;
+  border-radius: 15px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  cursor: pointer;
+  font-size: var(--general-font-size); /* Tamaño del texto */
+  transition: transform 0.2s ease-in-out; /* Suaviza el cambio de color */
+  margin: 0 0.4rem;
+}
+
+.response button:hover {
+  transform: scale(1.15);
 }
 
 /* For mobile phones: */

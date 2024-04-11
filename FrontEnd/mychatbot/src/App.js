@@ -18,7 +18,8 @@ const predefinedAnswers = {
 };
 
 const App = () => {
-  const [messages, setMessages] = useState([]);
+  const firstMessage = { id: Date.now(), text: 'Hello! How can I help you today?', sender: 'bot' };
+  const [messages, setMessages] = useState([firstMessage]);
 
   const handleSendMessage = (text) => {
     const newMessage = { id: Date.now(), text: text, sender: 'user' };
@@ -26,8 +27,14 @@ const App = () => {
     axios.post(process.env.REACT_APP_API_URL, { query: text })
       .then(response => {
         console.log('Response from backend: ', response);
-        const botMessage = { id: Date.now() + 1, text: response.data, sender: 'bot' };
+        const botMessage = { id: Date.now(), text: response.data, sender: 'bot' };
         setMessages(currentMessages => [...currentMessages, botMessage]);
+        setTimeout(() => {
+          setMessages(currentMessages => [
+              ...currentMessages,
+              { id: Date.now(), text: 'Was this helpful?', sender: 'auto' }
+          ]);
+        }, 3000);
       })
       .catch(error => {
         const errMessage = { id: Date.now(), text: "I'm sorry, I'm having a little trouble at the moment. Please try again later.", sender: 'bot' };
@@ -62,7 +69,7 @@ const App = () => {
           <SideBar onQuestionSelect={handleQuestionSelect} />
         </div>
         <div className="App-chat-area">
-          <ChatWindow messages={messages} />
+          <ChatWindow messages={messages} setMessages={setMessages} />
           <InputBar onSendMessage={handleSendMessage} />
         </div>
         <div className="App-links">
