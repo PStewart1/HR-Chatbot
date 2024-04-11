@@ -1,5 +1,4 @@
 // LinkComponent.js
-import { Document } from 'react-pdf';
 import React from 'react';
 import './LinkComponent.css';
 
