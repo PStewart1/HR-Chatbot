@@ -76,6 +76,10 @@ const App = () => {
           <LinkComponent />
         </div>
       </div>
+      <div className="App-footer">
+        <SideBar onQuestionSelect={handleQuestionSelect} />
+        <LinkComponent />
+      </div>
     </div>
   );
 }

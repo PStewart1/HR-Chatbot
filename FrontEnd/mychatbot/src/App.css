@@ -45,7 +45,23 @@
   flex-grow: 1; 
 }
 
+.App-footer {
+  display: none;
+}
+
 /* For mobile phones: */
-@media only screen and (max-width: 600px) {
-  
+@media (width <= 600px) {
+  .App-sidebar, .App-links {
+    display: none;
+  }
+
+  /* .App-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--deep-blue);
+    color: var(--white);
+    height: 10vh;
+  } */
+
 }

@@ -41,6 +41,8 @@
 }
 
 /* For mobile phones: */
-@media only screen and (max-width: 600px) {
-  
+@media (width <= 600px) {
+  .link-list {
+    visibility: hidden;
+  }
 }

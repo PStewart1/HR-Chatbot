@@ -12,9 +12,15 @@ import './Sidebar.css';
 // import careerPathImage from '../../assets/images/path.png';
 
 function Sidebar({ onQuestionSelect }) {
+  // let sidebarOpen = false;
+  // const showMenu = () => {
+
+  // }
+
   return (
     <div className="sidebar">
-      <h2 className="sidebar-title">FAQ's</h2>
+      {/* <h2 className={`sidebar-title ${}`} onClick={() => showMenu() } >FAQ's</h2> */}
+      <h2 className={`sidebar-title `} >FAQ's</h2>
       <ul className='sidebar-buttons'>
         <li onClick={() => onQuestionSelect('How much PTO do I get?')}>
           {/* <img src={ptoImage} alt="PTO"/>  */}
