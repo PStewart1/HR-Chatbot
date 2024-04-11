@@ -1,28 +1,67 @@
 /* App.css */
+@import 'normalize.css';
+
+:root {
+  --deep-blue: #0047AB;
+  --light-blue: #0061e7;
+  --light-orange: #ff7657;
+  --warm-orange: #FF5733;
+  --vibrant-green: #00A651;
+  --white: #FFFFFF;
+  --general-font-size: 1rem;
+  --header-font-size: 1.7rem;
+  --title-font-size: 2rem;
+  --mobile-font-size: 0.8rem;
+  --faq-padding: 0.5rem;
+  --chat-padding: 0.6rem;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 .App {
   display: flex;
   height: 100vh;
-  flex-direction: row;
-
-}
-
-.sidebar {
-  flex: 0 0 20%; 
-}
-
-.chat-container {
-  width: 3;
-  display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Asegura que chat-area tome todo el espacio vertical disponible */
 
 }
 
-.chat-area {
+/* .App-header {
+  max-height: 10vh;
+} */
+
+.App-body {
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+  justify-content: space-between;
+  max-height: 85vh;
+}
+
+.App-chat-area {
   display: flex;
   flex-direction: column;
   flex-grow: 1; 
+}
 
+.App-footer {
+  display: none;
+}
+
+/* For mobile phones: */
+@media (width <= 600px) {
+  .App-sidebar, .App-links {
+    display: none;
+  }
+
+  /* .App-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--deep-blue);
+    color: var(--white);
+    height: 10vh;
+  } */
 
 }

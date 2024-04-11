@@ -1,8 +1,10 @@
 /* InputBar.css */
+@import url("../../App.css");
+
 .input-bar {
   padding: 30px;
-  background-color: #ffffff;
-  border: 1px solid #dc5252;
+  background-color: var(--white);
+  border: 1px solid var(--warm-orange);
   border-radius: 30px;
 
 }
@@ -25,8 +27,8 @@
 
 .input-bar button {
   padding: 10px 20px;
-  background-color: #00A651;
-  color: white;
+  background-color: var(--vibrant-green);
+  color: var(--white);
   border: none;
   border-radius: 40px;
   cursor: pointer;
@@ -34,5 +36,6 @@
 }
 
 .input-bar button:hover {
-  background-color: #FF5733;
+  background-color: var(--warm-orange);
+  transition: background-color 0.15s ease;
 }
