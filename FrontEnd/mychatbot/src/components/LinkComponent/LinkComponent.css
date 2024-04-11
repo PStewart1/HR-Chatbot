@@ -1,4 +1,6 @@
 /* LinkComponent.css */
+@import url("../../App.css");
+
 .link-container {
   display: flex;
   flex-direction: column;
@@ -9,30 +11,38 @@
   max-width: 226px;
   height: inherit; 
   margin: auto; 
+  /* margin-top: 60px; */
   padding: 20px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--white);
   border-radius: 20px;
   border: 1px  #000000;
 }
 .link-container h2 {
   text-align: center;
-  font-size: 26px;
+  font-size: var(--header-font-size);
   margin-bottom: 20px; /* Reducir el margen para compactar el espacio */
   color: #0c489c;
 }
 
 .link-container a {
   padding: 20px; /* Reducir el padding para que los enlaces sean más compactos */
-  font-size: 15px;
+  font-size: (var(--general-font-size));
   display: block;
   margin-bottom: 13px; /* Menor espacio entre enlaces */
-  color: #0047AB;
+  color: var(--deep-blue);
   text-decoration: none;
   font-weight: bold; 
   transition: color 0.3s ease, font-size 0.3s ease;
 }
 
 .link-container a:hover {
-  color: #ef684a;
-  font-size: 17px; /* Aumento sutil al pasar el cursor */
+  color: var(--warm-orange);
+  font-size: calc(var(--general-font-size) + 0.1rem); /* Aumento sutil al pasar el cursor */
+}
+
+/* For mobile phones: */
+@media (width <= 600px) {
+  .link-list {
+    visibility: hidden;
+  }
 }
