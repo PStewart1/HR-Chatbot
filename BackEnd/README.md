@@ -28,7 +28,7 @@ http GET localhost:5000
 > "Hello! What can I help you with today?"
 
 ```shell
-http POST localhost:5000 query="what is the name of this company?"
+http POST localhost:5000/chat query="what is the name of this company?"
 ```
 > "The company is named Ethos Marketing Solutions."
 
