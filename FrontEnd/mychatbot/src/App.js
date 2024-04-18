@@ -10,9 +10,9 @@ import './App.css';
 
 const predefinedAnswers = {
   'How much PTO do I get?': 'We offer unlimited PTO, but we encourage responsible time management and ensuring adequate coverage for your responsibilities when taking time off.',
-  'What benefits are offered?': 'We maintain a business casual dress code, with flexibility for remote work environments.',
+  'What benefits are offered?': ' We provide 100% employer-paid medical, dental, and vision insurance for all full-time employees. Our healthcare provider is Aetna.',
   'How do I request time off?': 'You can request time off by submitting a request through our HR system, Gusto. As we offer unlimited PTO, please ensure adequate coverage for your responsibilities when planning your time off.',
-  'What is the dress code policy?': 'Our standard work hours are from 9 AM to 5 PM, Monday through Friday.',
+  'What is the dress code policy?': 'We maintain a business casual dress code, with flexibility for remote work environments.',
   'Can I work remotely?': 'Yes, remote work is the default arrangement for all employees. We trust our team to manage their time effectively and maintain open communication while working remotely.',
   'Can I request a leave of absence for personal reasons?': 'Employees may request a leave of absence for personal reasons, subject to approval by HR and management.',
 };
