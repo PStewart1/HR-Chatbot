@@ -1,5 +1,5 @@
 # HR-Chatbot
-Intro-------| TO BE EDITED ON GITHUB'S FRONTEND
+Intro-------|
 
 HR chatbot is a HR resource tool enabled by an LLM (Large Language Model) to emulate human responses both accurately and anonymously, all interacted with through a cloud-hosted frontend applet.
 
@@ -38,4 +38,4 @@ The main mode of usership is to address the chatbot directly with any HR related
 
 Localization-------|
 
-The applet can be hosted locally through use of a Docker container: <guidegoeshere>
+The applet can be hosted locally through use of a Docker container
